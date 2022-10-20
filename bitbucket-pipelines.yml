@@ -19,7 +19,7 @@ definitions:
           lfs: true
         script:
           - poetry install --no-interaction --no-ansi
-          - poetry run pytest -v test/*
+          - poetry run pytest -v tests/*
             --junitxml=test-reports/report.xml 
             --cov 
             --cov-report xml:coverage-reports/coverage-report.xml 
