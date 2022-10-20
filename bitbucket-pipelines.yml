@@ -40,7 +40,7 @@ definitions:
         trigger: manual
         script:
           - poetry config repositories.testpypi https://test.pypi.org/legacy/
-          - poetry config pypi-token.testpypi $JAX_CS_PYPI_TEST_TOKEN
+          - poetry config pypi-token.testpypi $PYPI_TEST_TOKEN
           - poetry publish --build --repository testpypi
     - step: &deployprod
         name: Deploy to Production PyPI
