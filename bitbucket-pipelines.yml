@@ -36,12 +36,16 @@ definitions:
           - pipe: atlassian/git-secrets-scan:0.5.1
     - step: &deploytest
         name: Deploy to Test PyPI
+        deployment: staging
+        trigger: manual
         script:
           - poetry config repositories.testpypi https://test.pypi.org/legacy/
           - poetry config pypi-token.testpypi $JAX_CS_PYPI_TEST_TOKEN
           - poetry publish --build --repository testpypi
     - step: &deployprod
         name: Deploy to Production PyPI
+        deployment: production
+        trigger: manual
         script:
           - poetry config pypi-token.pypi $PYPI_TOKEN
           - poetry publish --build
