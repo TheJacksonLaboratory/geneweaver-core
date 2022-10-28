@@ -32,11 +32,11 @@ def test_add_gs_by_user_schema(add_geneset_by_user_data):
     """Test the AddGenesetByUser class."""
     gs = AddGenesetByUser(**add_geneset_by_user_data)
     _shared_add_gs_by_user_asserts(gs, add_geneset_by_user_data)
-    assert gs.file_text == 'file_text'
+    assert gs.file_text == add_geneset_by_user_data['file_text']
 
 
 def test_add_gs_by_user_file_schema(add_geneset_by_user_file_data):
     """Test the AddGenesetByUserFile class."""
     gs = AddGenesetByUserFile(**add_geneset_by_user_file_data)
     _shared_add_gs_by_user_asserts(gs, add_geneset_by_user_file_data)
-    assert gs.file_url == 'http://example.com'
+    assert gs.file_url == add_geneset_by_user_file_data['file_url']

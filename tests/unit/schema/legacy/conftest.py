@@ -43,5 +43,5 @@ def add_geneset_by_user_file_data():
         'publication': None,
         'select_groups': ['1'],
         'sp_id': '1',
-        'file_url': 'http://example.com',
+        'file_url': 'https://example.com',
     }
