@@ -39,7 +39,9 @@ definitions:
         deployment: staging
         trigger: manual
         script:
-          - poetry config repositories.testpypi https://test.pypi.org/legacy/
+          -
+          - export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring && 
+            poetry config repositories.testpypi https://test.pypi.org/legacy/
           - poetry config pypi-token.testpypi $PYPI_TEST_TOKEN
           - poetry publish --build --repository testpypi
     - step: &deployprod
