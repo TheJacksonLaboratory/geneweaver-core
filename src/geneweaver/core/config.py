@@ -8,18 +8,16 @@ https://pydantic-docs.helpmanual.io/usage/settings/
 from pydantic import BaseSettings
 
 
-class GeneweaverBaseSettings(BaseSettings):
-
-    class Config:
-        env_prefix = "GW_"
-
-
-class CoreSettings(GeneweaverBaseSettings):
+class CoreSettings(BaseSettings):
     """
     Root Config and Settings Configuration
     """
     PROJECT_NAME = 'geneweaver-core'
     VERSION = '0.0.20'
+    LOG_LEVEL: str = 'INFO'
+
+    class Config:
+        env_prefix = "GW_"
 
 
 # Import me to access settings at runtime!

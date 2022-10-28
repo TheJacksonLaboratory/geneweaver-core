@@ -34,7 +34,7 @@ class GenesetUpload(BaseModel):
     groups: List[str]
     species: str
     gene_identifiers: str = Field(..., alias='gene-identifiers')
-    gene_list: GeneValue = Field(..., alias='gene-list')
+    gene_list: List[GeneValue] = Field(..., alias='gene-list')
 
 
 class BatchUpload(BaseModel):
