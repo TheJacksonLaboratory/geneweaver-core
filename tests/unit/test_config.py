@@ -1,5 +1,5 @@
-from geneweaver.core.config import CoreSettings
-from geneweaver.core.config import settings
+from jax.geneweaver.core.config import CoreSettings
+from jax.geneweaver.core.config import settings
 
 
 def test_core_settings_schema():

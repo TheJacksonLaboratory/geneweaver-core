@@ -1,7 +1,8 @@
 import datetime
 from typing import List
 from pydantic import BaseModel
-from geneweaver.core.schema.stubgenerator import StubGenerator
+
+from jax.geneweaver.core.schema.stubgenerator import StubGenerator
 
 
 class Group(BaseModel):

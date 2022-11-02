@@ -1,11 +1,11 @@
 [tool.poetry]
-name = "geneweaver-core"
-version = "0.0.20"
-description = "description"
+name = "jax-geneweaver-core"
+version = "0.0.1"
+description = "The core of the Jax-Geneweaver Python library"
 authors = ["Jax & Baylor Computational Sciences <cssc@jax.org>"]
 readme = "README.md"
 packages = [
-    { include = "geneweaver/core", from = "src" },
+    { include = "jax/geneweaver/core", from = "src" },
 ]
 
 [tool.poetry.dependencies]

@@ -1,6 +1,6 @@
 from pydantic import BaseModel, HttpUrl
 from typing import List, Optional
-from geneweaver.core.enum import GenesetAccess, GenesetScoreType
+from jax.geneweaver.core.enum import GenesetAccess, GenesetScoreType
 
 
 class AddGenesetByUserPublication(BaseModel):

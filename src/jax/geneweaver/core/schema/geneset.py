@@ -2,9 +2,9 @@ import datetime
 from typing import List
 from pydantic import BaseModel, Field
 
-from geneweaver.core.enum import GenesetAccess
-from geneweaver.core.schema.gene import GeneValue
-from geneweaver.core.enum import GenesetScoreType
+from jax.geneweaver.core.enum import GenesetAccess
+from jax.geneweaver.core.schema.gene import GeneValue
+from jax.geneweaver.core.enum import GenesetScoreType
 
 
 class Geneset(BaseModel):

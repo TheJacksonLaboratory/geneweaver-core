@@ -1,6 +1,6 @@
-from geneweaver.core.schema.legacy_api import AddGenesetByUserPublication
-from geneweaver.core.schema.legacy_api import AddGenesetByUser
-from geneweaver.core.schema.legacy_api import AddGenesetByUserFile
+from jax.geneweaver.core.schema.legacy_api import AddGenesetByUserPublication
+from jax.geneweaver.core.schema.legacy_api import AddGenesetByUser
+from jax.geneweaver.core.schema.legacy_api import AddGenesetByUserFile
 
 
 def test_add_gs_by_user_pub_schema(add_geneset_by_user_publication_data):

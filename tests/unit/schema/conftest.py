@@ -1,6 +1,7 @@
 import pytest
 from datetime import datetime
 
+
 @pytest.fixture
 def gene_data():
     return {
