@@ -11,8 +11,8 @@ def test_core_settings_schema():
 
 def test_core_settings_default():
     """Test the CoreSettings class."""
-    assert settings.PROJECT_NAME == 'geneweaver-core'
-    assert settings.VERSION == '0.0.20'
+    assert settings.PROJECT_NAME == 'jax-geneweaver-core'
+    assert settings.VERSION == '0.0.2'
     assert settings.LOG_LEVEL == 'INFO'
 
 

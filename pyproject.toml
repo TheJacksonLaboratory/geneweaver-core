@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "jax-geneweaver-core"
-version = "0.0.1"
+version = "0.0.2"
 description = "The core of the Jax-Geneweaver Python library"
 authors = ["Jax & Baylor Computational Sciences <cssc@jax.org>"]
 readme = "README.md"
