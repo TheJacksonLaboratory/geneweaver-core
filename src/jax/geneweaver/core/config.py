@@ -12,8 +12,8 @@ class CoreSettings(BaseSettings):
     """
     Root Config and Settings Configuration
     """
-    PROJECT_NAME = 'geneweaver-core'
-    VERSION = '0.0.20'
+    PROJECT_NAME = 'jax-geneweaver-core'
+    VERSION = '0.0.2'
     LOG_LEVEL: str = 'INFO'
 
     class Config:
