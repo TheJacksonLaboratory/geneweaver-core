@@ -61,7 +61,7 @@ def test_geneset_upload_schema(geneset_upload_data):
     assert geneset_upload.access == geneset_upload_data['access']
     assert geneset_upload.groups == geneset_upload_data['groups']
     assert geneset_upload.species == geneset_upload_data['species']
-    assert geneset_upload.gene_identifiers == geneset_upload_data['gene-identifiers']
+    assert geneset_upload.gene_identifier == geneset_upload_data['gene-identifier']
     assert len(geneset_upload.gene_list) == len(geneset_upload_data['gene-list'])
 
 

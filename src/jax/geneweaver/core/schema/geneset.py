@@ -33,7 +33,7 @@ class GenesetUpload(BaseModel):
     access: GenesetAccess
     groups: List[str]
     species: str
-    gene_identifiers: str = Field(..., alias='gene-identifiers')
+    gene_identifier: str = Field(..., alias='gene-identifier')
     gene_list: List[GeneValue] = Field(..., alias='gene-list')
 
 

@@ -28,3 +28,8 @@ class GenesetScoreType(int, Enum):
 class GenesetAccess(str, Enum):
     PRIVATE = 'private'
     PUBLIC = 'public'
+
+
+class AnnotationType(str, Enum):
+    MONARCH = 'monarch'
+    NCBO = 'ncbo'

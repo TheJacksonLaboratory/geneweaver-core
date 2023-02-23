@@ -1,8 +1,7 @@
 from pydantic import BaseModel
 
 
-class Publication(BaseModel):
-    id: int
+class PublicationUpload(BaseModel):
     authors: str
     title: str
     abstract: str
@@ -12,3 +11,7 @@ class Publication(BaseModel):
     month: str
     year: int
     pubmed: int
+
+
+class Publication(PublicationUpload):
+    id: int
