@@ -6,7 +6,7 @@ from geneweaver.core.schema.geneset import BatchUpload
 from geneweaver.core.schema.geneset import Geneset
 from geneweaver.core.schema.geneset import GenesetUpload
 from geneweaver.core.schema.stubgenerator import StubGenerator
-from geneweaver.core.schema.user import User, UserFull
+from geneweaver.core.schema.user import UserFull
 from geneweaver.core.schema.project import Project
 from geneweaver.core.schema.project import ProjectCreate
 from geneweaver.core.schema.publication import Publication

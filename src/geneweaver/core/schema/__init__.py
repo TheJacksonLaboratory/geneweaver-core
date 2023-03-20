@@ -1,3 +1,4 @@
+# ruff: noqa: F401
 from .gene import Gene, GeneValue
 from .geneset import Geneset, GenesetUpload
 from .group import Group, UserAdminGroup
