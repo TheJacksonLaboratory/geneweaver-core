@@ -33,3 +33,10 @@ class GenesetAccess(str, Enum):
 class AnnotationType(str, Enum):
     MONARCH = 'monarch'
     NCBO = 'ncbo'
+
+
+class AdminLevel(int, Enum):
+    NORMAL_USER = 0
+    CURATOR = 1
+    ADMIN = 2
+    ADMIN_WITH_DEBUG = 3

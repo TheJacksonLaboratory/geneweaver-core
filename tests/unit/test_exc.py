@@ -1,4 +1,4 @@
-from jax.geneweaver.core.exc import GeneweaverException
+from geneweaver.core.exc import GeneweaverException
 
 
 def throw_geneweaver_exception():

@@ -1,9 +1,9 @@
 import pytest
 
-from jax.geneweaver.core.enum import CurationAssignment
-from jax.geneweaver.core.enum import GenesetAccess
-from jax.geneweaver.core.enum import GenesetScoreType
-from jax.geneweaver.core.enum import GenesetScoreTypeStr
+from geneweaver.core.enum import CurationAssignment
+from geneweaver.core.enum import GenesetAccess
+from geneweaver.core.enum import GenesetScoreType
+from geneweaver.core.enum import GenesetScoreTypeStr
 
 
 @pytest.mark.parametrize("attribute,expected", [

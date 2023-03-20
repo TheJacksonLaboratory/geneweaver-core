@@ -1,6 +1,6 @@
 import pytest
 
-from jax.geneweaver.core.config import CoreSettings
+from geneweaver.core.config_class import CoreSettings
 
 
 @pytest.mark.parametrize("attribute", ['PROJECT_NAME', 'LOG_LEVEL'])

@@ -2,9 +2,9 @@ import datetime
 from typing import List
 from pydantic import BaseModel, Field
 
-from jax.geneweaver.core.enum import GenesetAccess
-from jax.geneweaver.core.schema.gene import GeneValue
-from jax.geneweaver.core.enum import GenesetScoreType
+from geneweaver.core.enum import GenesetAccess
+from geneweaver.core.schema.gene import GeneValue
+from geneweaver.core.enum import GenesetScoreType
 
 
 class Geneset(BaseModel):
@@ -40,3 +40,20 @@ class GenesetUpload(BaseModel):
 class BatchUpload(BaseModel):
     batch_file: str
     curation_group: List[str]
+
+
+class GenesetInfo(BaseModel):
+    id: int
+    page_views: int
+    referers: List[str]
+    analyses: List[str]
+    resource_id: int
+    last_sim: str
+    last_ann: str
+    jac_started: str
+    jac_completed: str
+
+
+class SimilarGeneset(Geneset):
+    jax_value: float
+    gic_value: float

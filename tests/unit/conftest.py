@@ -1,5 +1,6 @@
 import pytest
-from jax.geneweaver.core.config_class import CoreSettings
+from geneweaver.core.config_class import CoreSettings
+from geneweaver.testing.fixtures import *  # noqa: F403
 
 
 @pytest.fixture(scope="session")
