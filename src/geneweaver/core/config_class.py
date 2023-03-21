@@ -4,7 +4,6 @@ Python Package main config file.
 For more options refer to pydantic base-settings docs:
 https://pydantic-docs.helpmanual.io/usage/settings/
 """
-
 from pydantic import BaseSettings
 
 
@@ -18,7 +17,3 @@ class CoreSettings(BaseSettings):
 
     class Config:
         env_prefix = "GW_"
-
-
-# Import me to access settings at runtime!
-settings = CoreSettings()

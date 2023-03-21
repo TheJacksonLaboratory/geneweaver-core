@@ -54,7 +54,7 @@ def geneset_upload_data():
         'access': 'private',
         'groups': ['group'],
         'species': 'species',
-        'gene-identifiers': 'gene_identifiers',
+        'gene-identifier': 'gene_identifier',
         'gene-list': [{
             'gene-id': '1',
             'value': '1'

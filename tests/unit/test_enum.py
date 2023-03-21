@@ -1,32 +1,42 @@
+import pytest
 
-from jax.geneweaver.core.enum import CurationAssignment
-from jax.geneweaver.core.enum import GenesetAccess
-from jax.geneweaver.core.enum import GenesetScoreType
-from jax.geneweaver.core.enum import GenesetScoreTypeStr
+from geneweaver.core.enum import CurationAssignment
+from geneweaver.core.enum import GenesetAccess
+from geneweaver.core.enum import GenesetScoreType
+from geneweaver.core.enum import GenesetScoreTypeStr
 
 
-def test_curation_assignment():
+@pytest.mark.parametrize("attribute,expected", [
+    ('UNASSIGNED', 1),
+    ('ASSIGNED', 2),
+    ('READY_FOR_REVIEW', 3),
+    ('REVIEWED', 4),
+    ('APPROVED', 5)
+])
+def test_curation_assignment(attribute, expected):
     """Test the CurationAssignment enum."""
-    assert CurationAssignment.UNASSIGNED == 1
-    assert CurationAssignment.ASSIGNED == 2
-    assert CurationAssignment.READY_FOR_REVIEW == 3
-    assert CurationAssignment.REVIEWED == 4
-    assert CurationAssignment.APPROVED == 5
+    assert getattr(CurationAssignment, attribute) == expected
 
 
-def test_curation_assignment_from_int():
+@pytest.mark.parametrize("int_value,expected", [
+    (1, CurationAssignment.UNASSIGNED),
+    (2, CurationAssignment.ASSIGNED),
+    (3, CurationAssignment.READY_FOR_REVIEW),
+    (4, CurationAssignment.REVIEWED),
+    (5, CurationAssignment.APPROVED)
+])
+def test_curation_assignment_from_int(int_value, expected):
     """Test the CurationAssignment enum creation from an int."""
-    assert CurationAssignment(1) == CurationAssignment.UNASSIGNED
-    assert CurationAssignment(2) == CurationAssignment.ASSIGNED
-    assert CurationAssignment(3) == CurationAssignment.READY_FOR_REVIEW
-    assert CurationAssignment(4) == CurationAssignment.REVIEWED
-    assert CurationAssignment(5) == CurationAssignment.APPROVED
+    assert CurationAssignment(int_value) == expected
 
 
-def test_geneset_access():
+@pytest.mark.parametrize("attribute,expected", [
+    ('PRIVATE', 'private'),
+    ('PUBLIC', 'public')
+])
+def test_geneset_access(attribute, expected):
     """Test the GenesetAccess enum."""
-    assert GenesetAccess.PRIVATE == 'private'
-    assert GenesetAccess.PUBLIC == 'public'
+    assert getattr(GenesetAccess, attribute) == expected
 
 
 def test_geneset_access_from_string():

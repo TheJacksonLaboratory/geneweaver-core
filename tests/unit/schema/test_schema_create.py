@@ -1,15 +1,15 @@
-from jax.geneweaver.core.schema.gene import Gene
-from jax.geneweaver.core.schema.gene import GeneValue
-from jax.geneweaver.core.schema.group import Group
-from jax.geneweaver.core.schema.group import UserAdminGroup
-from jax.geneweaver.core.schema.geneset import BatchUpload
-from jax.geneweaver.core.schema.geneset import Geneset
-from jax.geneweaver.core.schema.geneset import GenesetUpload
-from jax.geneweaver.core.schema.stubgenerator import StubGenerator
-from jax.geneweaver.core.schema.user import User
-from jax.geneweaver.core.schema.project import Project
-from jax.geneweaver.core.schema.project import ProjectCreate
-from jax.geneweaver.core.schema.publication import Publication
+from geneweaver.core.schema.gene import Gene
+from geneweaver.core.schema.gene import GeneValue
+from geneweaver.core.schema.group import Group
+from geneweaver.core.schema.group import UserAdminGroup
+from geneweaver.core.schema.geneset import BatchUpload
+from geneweaver.core.schema.geneset import Geneset
+from geneweaver.core.schema.geneset import GenesetUpload
+from geneweaver.core.schema.stubgenerator import StubGenerator
+from geneweaver.core.schema.user import UserFull
+from geneweaver.core.schema.project import Project
+from geneweaver.core.schema.project import ProjectCreate
+from geneweaver.core.schema.publication import Publication
 
 
 def test_gene_schema(gene_data):
@@ -61,7 +61,7 @@ def test_geneset_upload_schema(geneset_upload_data):
     assert geneset_upload.access == geneset_upload_data['access']
     assert geneset_upload.groups == geneset_upload_data['groups']
     assert geneset_upload.species == geneset_upload_data['species']
-    assert geneset_upload.gene_identifiers == geneset_upload_data['gene-identifiers']
+    assert geneset_upload.gene_identifier == geneset_upload_data['gene-identifier']
     assert len(geneset_upload.gene_list) == len(geneset_upload_data['gene-list'])
 
 
@@ -135,7 +135,7 @@ def test_stubgenerator_schema(stub_generator_data):
 
 def test_user_schema(user_data):
     """Test creating a User from a dict."""
-    user = User(**user_data)
+    user = UserFull(**user_data)
     assert user.id == user_data['id']
     assert user.email == user_data['email']
     assert user.first_name == user_data['first_name']
