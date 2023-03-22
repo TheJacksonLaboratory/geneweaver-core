@@ -10,6 +10,7 @@ from geneweaver.core.schema.user import UserFull
 from geneweaver.core.schema.project import Project
 from geneweaver.core.schema.project import ProjectCreate
 from geneweaver.core.schema.publication import Publication
+from geneweaver.core.schema.ontology import Ontology, OntologyDB
 
 
 def test_gene_schema(gene_data):
@@ -146,3 +147,28 @@ def test_user_schema(user_data):
     assert user.is_guest == user_data['is_guest']
     assert user.groups == user_data['groups']
     assert user.stubgenerators == user_data['stubgenerators']
+
+
+def test_ontology_schema(ontology_data):
+    """Test creating an ontology from a dict."""
+    ontology = Ontology(**ontology_data)
+    assert ontology.ontology_id == ontology_data['ontology_id']
+    assert ontology.reference_id == ontology_data['reference_id']
+    assert ontology.name == ontology_data['name']
+    assert ontology.description == ontology_data['description']
+    assert ontology.children == ontology_data['children']
+    assert ontology.parents == ontology_data['parents']
+    assert ontology.ontdb_id == ontology_data['ontdb_id']
+    assert ontology.ro_ont_id == ontology_data['ro_ont_id']
+
+
+def test_ontology_db_schema(ontology_db_data):
+    """Test creating an ontology db from a dict."""
+    ontology_db = OntologyDB(**ontology_db_data)
+    assert ontology_db.ontology_db_id == ontology_db_data['ontology_db_id']
+    assert ontology_db.name == ontology_db_data['name']
+    assert ontology_db.prefix == ontology_db_data['prefix']
+    assert ontology_db.ncbo_id == ontology_db_data['ncbo_id']
+    assert ontology_db.date == ontology_db_data['date']
+    assert ontology_db.linkout_url == ontology_db_data['linkout_url']
+    assert ontology_db.ncbo_vid == ontology_db_data['ncbo_vid']

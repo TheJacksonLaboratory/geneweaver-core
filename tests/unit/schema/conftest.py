@@ -150,3 +150,30 @@ def user_data():
         'groups': ['1'],
         'stubgenerators': [],
     }
+
+
+@pytest.fixture
+def ontology_data():
+    return {
+        'ontology_id': 1,
+        'reference_id': 1,
+        'name': 'name',
+        'description': 'description',
+        'children': [],
+        'parents': [],
+        'ontdb_id': 1,
+        'ro_ont_id': 1
+    }
+
+
+@pytest.fixture
+def ontology_db_data():
+    return {
+        'ontology_db_id': 1,
+        'name': 'name',
+        'prefix': 'prefix',
+        'ncbo_id': 'ncbo_id',
+        'date': '2019-01-01',
+        'linkout_url': 'linkout_url',
+        'ncbo_vid': 'ncbo_vid'
+    }

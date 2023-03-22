@@ -2,7 +2,7 @@ from typing import List
 from pydantic import BaseModel
 
 
-class Ontology:
+class Ontology(BaseModel):
     ontology_id: int
     reference_id: int
     name: str
