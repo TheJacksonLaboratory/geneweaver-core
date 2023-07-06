@@ -9,7 +9,7 @@ from geneweaver.core.parse.batch import (
     finalize_processed_geneset,
 )
 
-from tests.unit.parse.parse.conftest import (
+from tests.unit.parse.batch.conftest import (
     HAS_REQUIRED_HEADER_FIELDS,
 )
 

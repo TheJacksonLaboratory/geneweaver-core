@@ -6,7 +6,7 @@ from geneweaver.core.parse.batch import (
     check_has_required_header_values,
 )
 
-from tests.unit.parse.parse.conftest import (
+from tests.unit.parse.batch.conftest import (
     HAS_REQUIRED_HEADER_FIELDS,
     MISSING_REQUIRED_HEADER_FIELDS,
 )
