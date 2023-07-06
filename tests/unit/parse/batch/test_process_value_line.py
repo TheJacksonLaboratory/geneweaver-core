@@ -1,7 +1,7 @@
 """Tests for the parse_qvalue function."""
 # ruff: noqa: ANN001, ANN201
 import pytest
-from geneweaver.core.parse.parse import (
+from geneweaver.core.parse.batch import (
     InvalidBatchValueLineError,
     MultiLineStringError,
     process_value_line,

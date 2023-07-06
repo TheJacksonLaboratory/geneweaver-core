@@ -1,7 +1,7 @@
 """Tests for the update_header function."""
 # ruff: noqa: ANN001, ANN201
 import pytest
-from geneweaver.core.parse.parse import update_header
+from geneweaver.core.parse.batch import update_header
 
 
 @pytest.mark.parametrize(

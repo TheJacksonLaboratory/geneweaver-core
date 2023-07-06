@@ -1,1 +1,1 @@
-"""Tests for the parse.score module."""
+"""Tests for the `parse.score` module."""

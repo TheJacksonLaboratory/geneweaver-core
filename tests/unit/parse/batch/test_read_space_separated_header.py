@@ -1,7 +1,7 @@
 """Tests for the read_space_separated_header function."""
 # ruff: noqa: ANN001, ANN201
 import pytest
-from geneweaver.core.parse.parse import (
+from geneweaver.core.parse.batch import (
     SPACE_SEPARATED_HEADER_CHARACTERS,
     NotAHeaderRowError,
     read_space_separated_header,

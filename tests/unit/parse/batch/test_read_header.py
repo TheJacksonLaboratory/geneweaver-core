@@ -3,7 +3,7 @@
 from unittest.mock import patch
 
 import pytest
-from geneweaver.core.parse.parse import (
+from geneweaver.core.parse.batch import (
     IgnoreLineError,
     MissingRequiredHeaderError,
     NotAHeaderRowError,
@@ -14,9 +14,9 @@ from geneweaver.core.parse.parse import (
 
 @pytest.mark.parametrize("expected_exception", [NotAHeaderRowError, IgnoreLineError])
 @pytest.mark.parametrize("read_mode", [ReadMode.HEADER, ReadMode.CONTENT])
-@patch("geneweaver.core.parse.parse.process_header_line")
-@patch("geneweaver.core.parse.parse.finalize_processed_geneset")
-@patch("geneweaver.core.parse.parse.update_header")
+@patch("geneweaver.core.parse.batch.process_header_line")
+@patch("geneweaver.core.parse.batch.finalize_processed_geneset")
+@patch("geneweaver.core.parse.batch.update_header")
 def test_read_header_read_error(
     mock_update_header,
     mock_finalize_processed_geneset,
@@ -37,9 +37,9 @@ def test_read_header_read_error(
     assert mock_process_header_line.call_count == 1
 
 
-@patch("geneweaver.core.parse.parse.process_header_line")
-@patch("geneweaver.core.parse.parse.finalize_processed_geneset")
-@patch("geneweaver.core.parse.parse.update_header")
+@patch("geneweaver.core.parse.batch.process_header_line")
+@patch("geneweaver.core.parse.batch.finalize_processed_geneset")
+@patch("geneweaver.core.parse.batch.update_header")
 def test_read_header_finalize_error(
     mock_update_header, mock_finalize_processed_geneset, mock_process_header_line
 ):
@@ -84,9 +84,9 @@ def test_read_header_finalize_error(
     ],
 )
 @pytest.mark.parametrize("read_mode", [ReadMode.HEADER, ReadMode.CONTENT])
-@patch("geneweaver.core.parse.parse.process_header_line")
-@patch("geneweaver.core.parse.parse.finalize_processed_geneset")
-@patch("geneweaver.core.parse.parse.update_header")
+@patch("geneweaver.core.parse.batch.process_header_line")
+@patch("geneweaver.core.parse.batch.finalize_processed_geneset")
+@patch("geneweaver.core.parse.batch.update_header")
 def test_read_header(
     mock_update_header,
     mock_finalize_processed_geneset,

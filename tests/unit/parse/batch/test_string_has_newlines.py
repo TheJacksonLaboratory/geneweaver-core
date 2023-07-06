@@ -1,7 +1,7 @@
 """Tests for the string_has_newlines function."""
 # ruff: noqa: ANN001, ANN201
 import pytest
-from geneweaver.core.parse.parse import string_has_newlines
+from geneweaver.core.parse.batch import string_has_newlines
 
 
 @pytest.mark.parametrize(

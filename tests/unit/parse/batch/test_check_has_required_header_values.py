@@ -1,7 +1,7 @@
 """Tests for the check_has_required_header_values function."""
 # ruff: noqa: ANN001, ANN201
 import pytest
-from geneweaver.core.parse.parse import (
+from geneweaver.core.parse.batch import (
     MissingRequiredHeaderError,
     check_has_required_header_values,
 )

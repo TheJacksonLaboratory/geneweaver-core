@@ -3,7 +3,7 @@
 from unittest.mock import patch
 
 import pytest
-from geneweaver.core.parse.parse import ReadMode, read_values
+from geneweaver.core.parse.batch import ReadMode, read_values
 
 
 # Mocking GenesetValueInput
@@ -18,11 +18,11 @@ class MockGenesetValueInput:
 
 @pytest.mark.skip(reason="Failing test due to comparison of mock objects")
 @patch(
-    "geneweaver.core.parse.parse.GenesetValueInput",
+    "geneweaver.core.parse.batch.GenesetValueInput",
     new_callable=lambda: MockGenesetValueInput,
 )
-@patch("geneweaver.core.parse.parse.process_value_line")
-@patch("geneweaver.core.parse.parse.check_has_required_header_values")
+@patch("geneweaver.core.parse.batch.process_value_line")
+@patch("geneweaver.core.parse.batch.check_has_required_header_values")
 @pytest.mark.parametrize(
     (
         "line",
@@ -73,11 +73,11 @@ def test_read_values_success(
 
 
 @patch(
-    "geneweaver.core.parse.parse.GenesetValueInput",
+    "geneweaver.core.parse.batch.GenesetValueInput",
     new_callable=lambda: MockGenesetValueInput,
 )
-@patch("geneweaver.core.parse.parse.process_value_line")
-@patch("geneweaver.core.parse.parse.check_has_required_header_values")
+@patch("geneweaver.core.parse.batch.process_value_line")
+@patch("geneweaver.core.parse.batch.check_has_required_header_values")
 @pytest.mark.parametrize(
     ("line", "header", "current_geneset_values", "process_line_result"),
     [

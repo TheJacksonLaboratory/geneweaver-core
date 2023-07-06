@@ -3,7 +3,7 @@
 from unittest.mock import patch
 
 import pytest
-from geneweaver.core.parse.parse import (
+from geneweaver.core.parse.batch import (
     MissingRequiredHeaderError,
     check_has_required_header_values,
     finalize_processed_geneset,
@@ -20,7 +20,7 @@ from tests.unit.parse.parse.conftest import (
 def test_finalize_processed_geneset(genesets, header, current_geneset_values):
     """Tests finalize_processed_geneset successfully creates and adds geneset."""
     geneset_start_len = len(genesets)
-    with patch("geneweaver.core.parse.parse.create_geneset") as create_mock:
+    with patch("geneweaver.core.parse.batch.create_geneset") as create_mock:
         create_mock.return_value = "geneset3"
         (
             updated_genesets,
@@ -60,11 +60,11 @@ def test_finalize_processed_geneset_missing_required_header(header):
 def test_finalize_processed_geneset_with_mocks(header):
     """Tests finalize_processed_geneset with mocks."""
     with patch(
-        "geneweaver.core.parse.parse.check_has_required_header_values"
+        "geneweaver.core.parse.batch.check_has_required_header_values"
     ) as mock_check, patch(
-        "geneweaver.core.parse.parse.create_geneset"
+        "geneweaver.core.parse.batch.create_geneset"
     ) as mock_create, patch(
-        "geneweaver.core.parse.parse.reset_required_header_values"
+        "geneweaver.core.parse.batch.reset_required_header_values"
     ) as mock_reset:
         genesets = []
         created_geneset = "geneset1"

@@ -3,7 +3,7 @@
 from unittest.mock import MagicMock, patch
 
 import pytest
-from geneweaver.core.parse.parse import (
+from geneweaver.core.parse.batch import (
     HEADER_CHARACTERS,
     SPACE_SEPARATED_HEADER_CHARACTERS,
     IgnoreLineError,
@@ -15,14 +15,14 @@ from geneweaver.core.parse.parse import (
 @pytest.fixture()
 def mock_read_single_prefix():
     """Patch the read_single_prefix_header function."""
-    with patch("geneweaver.core.parse.parse.read_single_prefix_header") as mock:
+    with patch("geneweaver.core.parse.batch.read_single_prefix_header") as mock:
         yield mock
 
 
 @pytest.fixture()
 def mock_read_space_separated():
     """Patch the read_space_separated_header function."""
-    with patch("geneweaver.core.parse.parse.read_space_separated_header") as mock:
+    with patch("geneweaver.core.parse.batch.read_space_separated_header") as mock:
         yield mock
 
 

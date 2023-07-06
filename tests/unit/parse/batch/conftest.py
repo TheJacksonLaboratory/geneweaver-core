@@ -1,5 +1,5 @@
 """Fixtures for parsing tests."""
-from geneweaver.core.parse.parse import HEADER_CHARACTERS, REQUIRED_HEADERS
+from geneweaver.core.parse.batch import HEADER_CHARACTERS, REQUIRED_HEADERS
 
 HAS_REQUIRED_HEADER_FIELDS = [
     # All required keys are present

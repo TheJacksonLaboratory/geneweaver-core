@@ -3,7 +3,7 @@
 from unittest.mock import patch
 
 import pytest
-from geneweaver.core.parse.parse import (
+from geneweaver.core.parse.batch import (
     BatchUploadGeneset,
     IgnoreLineError,
     NotAHeaderRowError,
@@ -56,9 +56,9 @@ def test_process_lines_with_batch_file_contents(example_batch_file_contents):
         ["geneset1", "geneset2"],
     ],
 )
-@patch("geneweaver.core.parse.parse.read_header")
-@patch("geneweaver.core.parse.parse.read_values")
-@patch("geneweaver.core.parse.parse.create_geneset")
+@patch("geneweaver.core.parse.batch.read_header")
+@patch("geneweaver.core.parse.batch.read_values")
+@patch("geneweaver.core.parse.batch.create_geneset")
 def test_process_lines_header_error(
     mock_create_geneset,
     mock_read_values,
