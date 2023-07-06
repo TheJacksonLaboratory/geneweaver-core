@@ -69,7 +69,6 @@ def test_finalize_processed_geneset_with_mocks(header):
         genesets = []
         created_geneset = "geneset1"
         current_geneset_values = ["value1", "value2"]
-        header = {"key1": "value1", "key2": "value2", "key3": "value3"}
         reset_header = {"key1": "value1"}
         mock_create.return_value = created_geneset
         mock_reset.return_value = reset_header
