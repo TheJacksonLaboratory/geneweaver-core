@@ -2,7 +2,7 @@
 
 These fixtures are available to be used by all tests in the unit test suite.
 """
-from typing import List
+from typing import Any, Dict, List
 
 import pytest
 from geneweaver.core.config_class import CoreSettings
@@ -22,8 +22,8 @@ def core_settings_required_fields() -> List[str]:
 
 
 @pytest.fixture(scope="session")
-def core_settings_optional_fields() -> dict:
-    """Return a list of the pydantic Settings class fields."""
+def core_settings_optional_fields() -> Dict[str, Any]:
+    """Return a dict of the optional pydantic Settings class fields."""
     return {
         f.name: f.default for f in CoreSettings.__fields__.values() if not f.required
     }
