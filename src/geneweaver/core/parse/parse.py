@@ -391,6 +391,6 @@ def string_has_newlines(input_str: str) -> bool:
 
     :returns: True if the string contains newline characters, False otherwise.
     """
-    if "\n" in input_str or "\r" in input_str:
-        return True
-    return False
+    # Here we return the results of the expression evaluation. This means that it will
+    # return True if either "\n" or "\r" is in the string, and False otherwise.
+    return "\n" in input_str or "\r" in input_str
