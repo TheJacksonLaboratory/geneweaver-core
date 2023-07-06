@@ -1,7 +1,10 @@
+"""Publication schemas."""
 from pydantic import BaseModel
 
 
 class PublicationUpload(BaseModel):
+    """Publication upload schema (no ID)."""
+
     authors: str
     title: str
     abstract: str
@@ -14,4 +17,6 @@ class PublicationUpload(BaseModel):
 
 
 class Publication(PublicationUpload):
-    id: int
+    """Publication schema (with ID)."""
+
+    id: int  # noqa: A003

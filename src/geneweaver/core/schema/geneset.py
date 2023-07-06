@@ -1,13 +1,15 @@
+"""Schemas for geneset."""
 import datetime
 from typing import List
-from pydantic import BaseModel, Field
 
-from geneweaver.core.enum import GenesetAccess
+from geneweaver.core.enum import GenesetAccess, GenesetScoreType
 from geneweaver.core.schema.gene import GeneValue
-from geneweaver.core.enum import GenesetScoreType
+from pydantic import BaseModel, Field
 
 
 class Geneset(BaseModel):
+    """Geneset schema."""
+
     name: str
     abbreviation: str
     description: str
@@ -24,26 +26,38 @@ class Geneset(BaseModel):
     is_edgelist: bool
 
 
+class GenesetGenes(BaseModel):
+    """Geneset genes schema."""
+
+    genes: List[GeneValue]
+
+
 class GenesetUpload(BaseModel):
+    """Geneset upload schema."""
+
     name: str
     label: str
-    score_type: GenesetScoreType = Field(..., alias='score-type')
+    score_type: GenesetScoreType = Field(..., alias="score-type")
     description: str
-    pubmed_id: str = Field(..., alias='pubmed-id')
+    pubmed_id: str = Field(..., alias="pubmed-id")
     access: GenesetAccess
     groups: List[str]
     species: str
-    gene_identifier: str = Field(..., alias='gene-identifier')
-    gene_list: List[GeneValue] = Field(..., alias='gene-list')
+    gene_identifier: str = Field(..., alias="gene-identifier")
+    gene_list: List[GeneValue] = Field(..., alias="gene-list")
 
 
 class BatchUpload(BaseModel):
+    """Batch upload schema."""
+
     batch_file: str
     curation_group: List[str]
 
 
 class GenesetInfo(BaseModel):
-    id: int
+    """Geneset info schema."""
+
+    id: int  # noqa: A003
     page_views: int
     referers: List[str]
     analyses: List[str]
@@ -55,5 +69,38 @@ class GenesetInfo(BaseModel):
 
 
 class SimilarGeneset(Geneset):
+    """Schema for similar geneset relation."""
+
     jax_value: float
     gic_value: float
+
+
+class GenesetRow(BaseModel):
+    """Geneset schema for database row."""
+
+    gs_id: int
+    usr_id: int
+    file_id: int
+    gs_name: str
+    gs_abbreviation: str
+    pub_id: int
+    res_id: int
+    cur_id: int
+    gs_description: str
+    sp_id: int
+    gs_count: int
+    gs_threshold_type: int
+    gs_threshold: str
+    gs_groups: str
+    gs_attribution_old: str
+    gs_uri: str
+    gs_gene_id_type: int
+    gs_created: datetime.date
+    admin_flag: str
+    gs_updated: datetime.datetime
+    gs_status: str
+    gsv_qual: str
+    _comments_author: str
+    _comments_curator: str
+    gs_attribution: int
+    gs_is_edgelist: bool

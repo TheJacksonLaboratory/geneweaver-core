@@ -1,9 +1,13 @@
-from pydantic import BaseModel, HttpUrl
+"""Models needed to work with the legacy API."""
 from typing import List, Optional
+
 from geneweaver.core.enum import GenesetAccess, GenesetScoreType
+from pydantic import BaseModel, HttpUrl
 
 
 class AddGenesetByUserPublication(BaseModel):
+    """Publication schema for adding genesets by user."""
+
     pub_abstract: Optional[str]
     pub_authors: Optional[str]
     pub_journal: Optional[str]
@@ -15,6 +19,8 @@ class AddGenesetByUserPublication(BaseModel):
 
 
 class AddGenesetByUserBase(BaseModel):
+    """Base schema for adding genesets by user."""
+
     gene_identifier: str
     gs_abbreviation: str
     gs_description: str
@@ -26,13 +32,18 @@ class AddGenesetByUserBase(BaseModel):
     sp_id: str
 
     class Config:
+        """Pydantic config."""
+
         use_enum_values = True
 
 
 class AddGenesetByUser(AddGenesetByUserBase):
+    """Schema for adding genesets by user."""
+
     file_text: str
 
 
 class AddGenesetByUserFile(AddGenesetByUserBase):
-    file_url: HttpUrl
+    """Schema for adding genesets by user from file."""
 
+    file_url: HttpUrl
