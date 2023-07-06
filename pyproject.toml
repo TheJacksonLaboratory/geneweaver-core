@@ -1,17 +1,19 @@
 [tool.poetry]
 name = "geneweaver-core"
-version = "0.1.0a1"
+version = "0.2.0"
 description = "The core of the Jax-Geneweaver Python library"
 authors = ["Jax & Baylor Computational Sciences <cssc@jax.org>"]
 readme = "README.md"
 license = "Apache-2.0"
+homepage = "https://bergsalex.github.io/geneweaver-docs/"
+repository = "https://github.com/bergsalex/geneweaver-testing"
 packages = [
     { include = "geneweaver/core", from = "src" },
 ]
 
 [tool.poetry.dependencies]
 python = "^3.9"
-pydantic = { extras = ["dotenv"], version = "^1.10.5" }
+pydantic = { extras = ["dotenv"], version = "^1.10.7" }
 
 [tool.poetry.group.dev.dependencies]
 pylint = "^2.15.4"
