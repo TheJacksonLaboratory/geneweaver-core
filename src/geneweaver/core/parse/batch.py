@@ -1,4 +1,55 @@
-"""Service functions for dealing with batch files."""
+"""Parse batch geneset files.
+
+This module provides a set of functions for processing batch geneset files and
+their contents. It includes functionality to check the type of a file,
+process lines of content, read headers and values, update and reset headers,
+and create Geneset objects for batch upload.
+
+File Type Identification Function:
+- is_batch_file: Check if the provided file contents are a valid batch file.
+
+Line Processing Function:
+- process_lines: Process each line of content to build and return a list of
+BatchUploadGeneset instances.
+
+Header Processing Functions:
+- read_header: Process a header line and update the corresponding state variables
+accordingly.
+- update_header: Update the header dictionary based on a key-value pair from the
+processed line.
+- reset_required_header_values: Reset required values in a header dictionary.
+- check_has_required_header_values: Check if a header dictionary has required values.
+- process_header_line: Process a header line into a key-value pair.
+- read_single_prefix_header: Read a single-prefix header line into a key-value pair.
+- read_space_separated_header: Read a space-separated header line into a key-value pair.
+
+Value Processing Functions:
+- read_values: Read a line assuming it's a value, and updates the reading mode if
+necessary.
+- process_value_line: Process a value line into a key-value pair.
+
+Geneset Construction Function:
+- create_geneset: Create a Geneset object from a batch upload.
+
+Geneset Finalization Function:
+- finalize_processed_geneset: Add the current geneset to the list and prepares for
+processing the next one.
+
+Exception Checking Function:
+- string_has_newlines: Check if a string has newline characters.
+
+Exceptions:
+- UnsupportedFileTypeError: Raised if the file is neither a batch file nor a geneset
+values file.
+- MultiLineStringError: Raised if a value row is encountered with return characters.
+- InvalidBatchValueLineError: Raised if a value row is encountered with more than two
+values.
+- NotAHeaderRowError: Raised when a header line is expected but not found.
+- MissingRequiredHeaderError: Raised when any of the required keys are missing in the
+header.
+- IgnoreLineError: Raised if the line is to be ignored based on its prefix.
+"""
+
 from enum import Enum
 from typing import List, Tuple
 
@@ -298,7 +349,7 @@ def reset_required_header_values(header: dict) -> dict:
 
     :param header: The header dictionary.
 
-    :returns:
+    :returns: The updated header dictionary.
     """
     for key in REQUIRED_HEADERS:
         try:
