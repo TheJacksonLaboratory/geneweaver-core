@@ -1,15 +1,15 @@
-"""Test the is_batch_file function in geneweaver.core.parse.batch"""
+"""Test the is_batch_file function in geneweaver.core.parse.batch."""
 # ruff: noqa: ANN001, ANN201
-import pytest
 from unittest.mock import patch
-from geneweaver.core.parse.batch import (
-    is_batch_file,
-    NotAHeaderRowError,
-    IgnoreLineError,
-    GeneweaverFileType,
-    UnsupportedFileTypeError,
-)
 
+import pytest
+from geneweaver.core.parse.batch import (
+    GeneweaverFileType,
+    IgnoreLineError,
+    NotAHeaderRowError,
+    UnsupportedFileTypeError,
+    is_batch_file,
+)
 
 # First we'll mock out the process_header_line and process_value_line functions
 # so that we can test the is_batch_file function in isolation.
@@ -46,7 +46,7 @@ def test_is_batch_file_ignore_line_error(mock_process_header_line):
 @patch("geneweaver.core.parse.batch.process_header_line")
 @patch("geneweaver.core.parse.batch.process_value_line")
 @pytest.mark.parametrize(
-    "process_return,expected_file_type",
+    ("process_return", "expected_file_type"),
     [
         ("header", GeneweaverFileType.BATCH),
         ("value", GeneweaverFileType.VALUES),
@@ -85,7 +85,7 @@ def test_is_batch_file(
 
 
 @pytest.mark.parametrize(
-    "contents, expected",
+    ("contents", "expected"),
     [
         ("!\theader\nsymbol\tvalue", GeneweaverFileType.BATCH),
         ("!header\nsymbol\tvalue", GeneweaverFileType.BATCH),
@@ -102,7 +102,7 @@ def test_is_batch_with_example_content(contents, expected):
 
 
 @pytest.mark.parametrize(
-    "contents, expected",
+    ("contents", "expected"),
     [
         ("value1\tvalue2\tvalue3\n", UnsupportedFileTypeError),
         ("value1\nvalue2\nvalue3\n", UnsupportedFileTypeError),

@@ -1,5 +1,6 @@
 """Exceptions related to file parsing."""
 
+
 class UnsupportedFileTypeError(Exception):
     """Custom exception for when a file type is not supported."""
 

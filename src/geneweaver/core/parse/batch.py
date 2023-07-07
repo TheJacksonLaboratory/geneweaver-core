@@ -2,6 +2,7 @@
 from enum import Enum
 from typing import List, Tuple
 
+from geneweaver.core.parse.enum import GeneweaverFileType
 from geneweaver.core.parse.exceptions import (
     IgnoreLineError,
     InvalidBatchValueLineError,
@@ -11,7 +12,6 @@ from geneweaver.core.parse.exceptions import (
     UnsupportedFileTypeError,
 )
 from geneweaver.core.schema.batch import BatchUploadGeneset, GenesetValueInput
-from geneweaver.core.parse.enum import GeneweaverFileType
 
 # Header characters which DO NOT need to be space separated.
 HEADER_CHARACTERS = {
@@ -73,7 +73,6 @@ def is_batch_file(contents: str) -> GeneweaverFileType:
     :returns: GeneweaverFileType.BATCH if the file is a batch file,
     GeneweaverFileType.VALUES otherwise.
     """
-    read_mode = ReadMode.HEADER
     for line in contents.splitlines():
         try:
             _ = process_header_line(line)
