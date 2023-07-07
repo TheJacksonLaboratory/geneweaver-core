@@ -1,7 +1,10 @@
+"""Enum classes for the GeneWeaver project."""
 from enum import Enum
 
 
 class CurationAssignment(int, Enum):
+    """Enum for the different types of curation assignments."""
+
     UNASSIGNED = 1
     ASSIGNED = 2
     READY_FOR_REVIEW = 3
@@ -10,14 +13,18 @@ class CurationAssignment(int, Enum):
 
 
 class GenesetScoreTypeStr(str, Enum):
-    P_VALUE = 'p-value'
-    Q_VALUE = 'q-value'
-    BINARY = 'binary'
-    CORRELATION = 'correlation'
-    EFFECT = 'effect'
+    """Enum for the different types of geneset scores."""
+
+    P_VALUE = "p-value"
+    Q_VALUE = "q-value"
+    BINARY = "binary"
+    CORRELATION = "correlation"
+    EFFECT = "effect"
 
 
 class GenesetScoreType(int, Enum):
+    """Integer based Enum for the different types of geneset scores."""
+
     P_VALUE = 1
     Q_VALUE = 2
     BINARY = 3
@@ -26,16 +33,22 @@ class GenesetScoreType(int, Enum):
 
 
 class GenesetAccess(str, Enum):
-    PRIVATE = 'private'
-    PUBLIC = 'public'
+    """Enum for the different types of geneset access."""
+
+    PRIVATE = "private"
+    PUBLIC = "public"
 
 
 class AnnotationType(str, Enum):
-    MONARCH = 'monarch'
-    NCBO = 'ncbo'
+    """Enum for the different types of annotations."""
+
+    MONARCH = "monarch"
+    NCBO = "ncbo"
 
 
 class AdminLevel(int, Enum):
+    """Enum for the different levels of admin access."""
+
     NORMAL_USER = 0
     CURATOR = 1
     ADMIN = 2

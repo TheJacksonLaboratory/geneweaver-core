@@ -1,14 +1,16 @@
-from geneweaver.core.exc import GeneweaverException
+"""Test the Geneweaver exception module."""
+import pytest
+from geneweaver.core.exc import GeneweaverError
 
 
-def throw_geneweaver_exception():
+def throw_geneweaver_exception() -> None:
     """Throw a Geneweaver exception."""
-    raise GeneweaverException("Geneweaver Exception")
+    raise GeneweaverError("Geneweaver Exception")
 
 
-def test_catch_geneweaver_exception():
+def test_catch_geneweaver_exception() -> None:
     """Catch a Geneweaver exception."""
-    try:
+    with pytest.raises(GeneweaverError) as excinfo:
         throw_geneweaver_exception()
-    except GeneweaverException as e:
-        assert str(e) == "Geneweaver Exception"
+
+    assert str(excinfo.value) == "Geneweaver Exception"
