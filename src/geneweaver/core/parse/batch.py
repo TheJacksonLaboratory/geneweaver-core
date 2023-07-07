@@ -8,8 +8,10 @@ from geneweaver.core.parse.exceptions import (
     MissingRequiredHeaderError,
     MultiLineStringError,
     NotAHeaderRowError,
+    UnsupportedFileTypeError,
 )
 from geneweaver.core.schema.batch import BatchUploadGeneset, GenesetValueInput
+from geneweaver.core.parse.enum import GeneweaverFileType
 
 # Header characters which DO NOT need to be space separated.
 HEADER_CHARACTERS = {
@@ -47,6 +49,51 @@ class ReadMode(Enum):
 
     HEADER = "header"
     CONTENT = "content"
+
+
+def is_batch_file(contents: str) -> GeneweaverFileType:
+    """Check if the provided file contents are a valid batch file.
+
+    We will consider a file to be a batch file if we encounter a header row before
+    encountering a value row. If we encounter a value row before a header row, we will
+    consider the file to be a geneset file.
+
+    Processing stops as soon as a header or value row is encountered. If each line
+    contains an ignore character (e.g. a comment), the entire file will be read.
+
+    :param contents: The contents of the file to be checked.
+
+    :raises: UnsupportedFileTypeError: If the file is neither a batch file nor a
+    geneset values file. Or if any of the following errors are encountered during
+    reading:
+        - MultiLineStringError: If a value row is encountered with return characters.
+        - InvalidBatchValueLineError: If a value row is encountered with more than two
+        values (the gene identifier and the score).
+
+    :returns: GeneweaverFileType.BATCH if the file is a batch file,
+    GeneweaverFileType.VALUES otherwise.
+    """
+    read_mode = ReadMode.HEADER
+    for line in contents.splitlines():
+        try:
+            _ = process_header_line(line)
+            return GeneweaverFileType.BATCH
+
+        except NotAHeaderRowError:
+            try:
+                _ = process_value_line(line)
+                return GeneweaverFileType.VALUES
+
+            except InvalidBatchValueLineError as e:
+                raise UnsupportedFileTypeError() from e
+
+            except MultiLineStringError as e:
+                raise UnsupportedFileTypeError() from e
+
+        except IgnoreLineError:
+            continue
+
+    raise UnsupportedFileTypeError()
 
 
 def process_lines(contents: str) -> List[BatchUploadGeneset]:

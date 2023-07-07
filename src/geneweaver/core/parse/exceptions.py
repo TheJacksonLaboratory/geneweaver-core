@@ -1,5 +1,11 @@
 """Exceptions related to file parsing."""
 
+class UnsupportedFileTypeError(Exception):
+    """Custom exception for when a file type is not supported."""
+
+    pass
+
+
 
 class NotAHeaderRowError(Exception):
     """Raised when a row is not a header row."""
