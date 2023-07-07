@@ -1,8 +1,11 @@
+"""Project schemas."""
 from pydantic import BaseModel
 
 
 class Project(BaseModel):
-    id: int
+    """Project schema."""
+
+    id: int  # noqa: A003
     name: str
     groups: list
     session_id: str
@@ -12,5 +15,7 @@ class Project(BaseModel):
 
 
 class ProjectCreate(BaseModel):
+    """Project create schema."""
+
     name: str
     notes: str
