@@ -7,7 +7,6 @@ class UnsupportedFileTypeError(Exception):
     pass
 
 
-
 class NotAHeaderRowError(Exception):
     """Raised when a row is not a header row."""
 
