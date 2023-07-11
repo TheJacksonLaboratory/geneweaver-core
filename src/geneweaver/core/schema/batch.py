@@ -60,5 +60,9 @@ class BatchUploadGeneset(BaseModel):
     def curation_id_to_int(cls, v, values) -> int:
         """Initialize curation id based on `private` value."""
         if not v:
+            # If the geneset is private, it should be set to have
+            # curation tier 5, otherwise it should be set to have
+            # curation tier 4.
+            # It should default to private if not specified.
             return 5 if values.get("private", True) else 4
         return v

@@ -24,13 +24,9 @@ class Message(BaseModel):
 class UserMessage(Message):
     """Class for defining a message for a user."""
 
-    ...
-
 
 class SystemMessage(Message):
     """Class for defining a message for the system."""
-
-    ...
 
 
 class MessageResponse(BaseModel):
