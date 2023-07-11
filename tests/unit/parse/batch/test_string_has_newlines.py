@@ -27,6 +27,22 @@ from geneweaver.core.parse.batch import string_has_newlines
         ("     ", False),
         # test empty string
         ("", False),
+        # test string with tabs and no newlines
+        ("Hello\t\tworld!", False),
+        ("Hello \t world!", False),
+        # test string with tabs and newlines
+        ("Hello\t\t\nworld!", True),
+        ("Hello \t \n world!", True),
+        # test string with tabs and carriage returns
+        ("Hello\t\t\rworld!", True),
+        ("Hello \t \r world!", True),
+        # test string with tabs and carriage returns and newlines
+        ("Hello\t\t\r\nworld!", True),
+        ("Hello\t\r\n world!", True),
+        # test string with tabs and carriage returns and newlines and spaces
+        ("Hello\t\t \r\n world!", True),
+        ("Hello\t\r\n world!", True),
+
     ],
 )
 def test_string_has_newlines(input_str, expected):

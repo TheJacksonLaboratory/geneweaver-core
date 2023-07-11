@@ -23,6 +23,11 @@ from geneweaver.core.parse.batch import (
         # Extra keys are present, but all required keys are still there
         (
             {
+                # This code uses dict comprehension to create a dictionary
+                # with keys from the list of required headers and values
+                # Then it uses the unpack operator (**) to initialize a
+                # dictionary with those keys and values and then adds
+                # an extra key and value to the dictionary.
                 **{
                     HEADER_CHARACTERS[key]: f"value{index}"
                     for index, key in enumerate(REQUIRED_HEADERS)
@@ -34,6 +39,7 @@ from geneweaver.core.parse.batch import (
         # All possible non-spaced header keys are present
         (
             {
+                # See above for explanation of this usage of the upack operator
                 **{
                     header_name: f"value{index}"
                     for index, header_name in enumerate(
@@ -43,6 +49,7 @@ from geneweaver.core.parse.batch import (
                 "extra_key": "extra_value",
             },
             {
+                # See above for explanation of this usage of the upack operator
                 **{
                     header_name: f"value{index}"
                     for index, header_name in enumerate(
@@ -57,6 +64,7 @@ from geneweaver.core.parse.batch import (
         # All possible header keys are present
         (
             {
+                # See above for explanation of this usage of the upack operator
                 **{
                     header_name: f"value{index}"
                     for index, header_name in enumerate(
@@ -67,6 +75,7 @@ from geneweaver.core.parse.batch import (
                 "extra_key": "extra_value",
             },
             {
+                # See above for explanation of this usage of the upack operator
                 **{
                     header_name: f"value{index}"
                     for index, header_name in enumerate(

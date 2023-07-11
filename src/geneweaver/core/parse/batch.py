@@ -228,7 +228,7 @@ def read_header(
     """
     key, value = process_header_line(line)
 
-    if read_mode == ReadMode.CONTENT:
+    if read_mode is ReadMode.CONTENT:
         genesets, current_geneset_values, header = finalize_processed_geneset(
             genesets, header, current_geneset_values
         )
@@ -317,7 +317,7 @@ def read_values(
     """
     symbol, value = process_value_line(line)
 
-    if read_mode == ReadMode.HEADER:
+    if read_mode is ReadMode.HEADER:
         check_has_required_header_values(header)
         read_mode = ReadMode.CONTENT
 
