@@ -2,6 +2,14 @@
 from enum import Enum
 
 
+class FileType(str, Enum):
+    """Enum for file types."""
+
+    TEXT = "txt"
+    EXCEL = "xlsx"
+    CSV = "csv"
+
+
 class GeneweaverFileType(str, Enum):
     """Enum for geneweaver specific file types."""
 

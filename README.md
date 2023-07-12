@@ -37,8 +37,13 @@ The Geneweaver Core library provides the following functionality:
   * `GeneweaverWarning`: Base warning class for Geneweaver
 
 * `geneweaver.core.pase`: Geneweaver file parsing functionality
-  * `parse`: Functions for parsing a file
+  * `batch`: Functions for parsing a batch file
   * `score`: Functions for parsing a score
+  * `csv`: Functions for parsing a CSV file
+  * `xlsx`: Functions for parsing an Excel file
+  * `enum`: Enumerations for file parsing
+  * `exceptions`: Exceptions for file parsing
+  * `utils`: Utility functions for file parsing
 
 #### Planned Functionality
 * `geneweaver.core.logging`: Shared logging management
