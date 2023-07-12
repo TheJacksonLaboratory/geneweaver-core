@@ -36,6 +36,10 @@ The Geneweaver Core library provides the following functionality:
   * `GeneweaverError`: Base error class for Geneweaver
   * `GeneweaverWarning`: Base warning class for Geneweaver
 
+* `geneweaver.core.pase`: Geneweaver file parsing functionality
+  * `parse`: Functions for parsing a file
+  * `score`: Functions for parsing a score
+
 #### Planned Functionality
 * `geneweaver.core.logging`: Shared logging management
 * `geneweaver.core.utils`: Shared utility functions
