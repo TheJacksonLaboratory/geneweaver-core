@@ -4,7 +4,7 @@ This module contains code to check if geneset values fall within a score thresho
 This is required for inserting geneset values into the database.
 
 To check if geneset values fall within a score threshold, use the `check_threshold`
-function. You can pass multiple values in a list, allowing you to check an en
+function. You can pass multiple values in a list, allowing you to check an entire
 geneset at once.
 
 Or, you can pass a single value to check a single geneset, just
