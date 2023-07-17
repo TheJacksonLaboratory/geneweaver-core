@@ -122,7 +122,7 @@ def publication_data() -> dict:
         "pages": "pages",
         "month": "month",
         "year": 1999,
-        "pubmed": 23456,
+        "pubmed_id": 23456,
     }
 
 

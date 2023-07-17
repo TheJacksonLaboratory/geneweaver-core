@@ -7,8 +7,9 @@ from pydantic import BaseSettings
 
 
 class ExternalServiceSettings(BaseSettings):
+    """External Service Config and Settings Configuration."""
 
-    PUBMED_XLM_SVC_URL = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id={0}&retmode=xml'
+    PUBMED_XLM_SVC_URL = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&id={0}&retmode=xml"
 
 
 class CoreSettings(BaseSettings):

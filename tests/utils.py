@@ -2,7 +2,7 @@
 from typing import Any
 
 
-def abbreviate_string_param(param: Any) -> str:
+def abbreviate_string_param(param: Any) -> str:  # noqa: ANN401
     """Abbreviate a pytest parameter.
 
     Function to abbreviate a string or dict parameter for pytest parametrization. This
@@ -21,9 +21,8 @@ def abbreviate_string_param(param: Any) -> str:
     just returns the string representation of the parameter.
     """
     if isinstance(param, str) and len(param) > 15:
-        return param[:15] + '...'
+        return param[:15] + "..."
     elif isinstance(param, dict) and len(param) > 5:
-        return str({k: v for k, v in list(param.items())[:5]}) + '...'
+        return str({k: v for k, v in list(param.items())[:5]}) + "..."
     else:
         return str(param)
-
