@@ -1,22 +1,23 @@
 """Publication schemas."""
+from typing import Optional
 from pydantic import BaseModel
 
 
-class PublicationUpload(BaseModel):
+class PublicationInfo(BaseModel):
     """Publication upload schema (no ID)."""
 
     authors: str
     title: str
     abstract: str
-    journal: str
-    volume: str
+    journal: Optional[str] = None
+    volume: Optional[str] = None
     pages: str
     month: str
     year: int
-    pubmed: int
+    pubmed_id: int
 
 
-class Publication(PublicationUpload):
+class Publication(PublicationInfo):
     """Publication schema (with ID)."""
 
     id: int  # noqa: A003
