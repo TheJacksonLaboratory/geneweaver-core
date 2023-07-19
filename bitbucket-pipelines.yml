@@ -19,9 +19,9 @@ definitions:
           lfs: true
         script:
           - poetry install --no-interaction --no-ansi
-          - poetry run pytest -v tests/
+          - poetry run pytest -v tests/unit/
             --junitxml=test-reports/report.xml 
-            --cov src/geneweaver/core
+            --cov geneweaver.core
             --cov-report xml:coverage-reports/coverage-report.xml 
             --cov-report html:coverage-html/
           # SonarCloud scan
