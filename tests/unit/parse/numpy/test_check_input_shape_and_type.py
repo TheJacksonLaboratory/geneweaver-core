@@ -1,15 +1,13 @@
 """Test the check_input_shape_and_type function."""
 import numpy as np
 import pytest
+from geneweaver.core.parse.numpy import check_input_shape_and_type
 
 from tests.unit.parse.numpy.const import (
     valid_geneset_array,
-    valid_labeled_geneset_array,
     valid_gt_2_labeled_geneset_array,
+    valid_labeled_geneset_array,
 )
-
-from geneweaver.core.parse.numpy import check_input_shape_and_type
-
 
 # Test cases for check_input_shape_and_type function
 test_cases_input = [
@@ -35,11 +33,12 @@ test_cases_input = [
 ]
 
 
-@pytest.mark.parametrize("input_array, expected", test_cases_input)
+@pytest.mark.parametrize(("input_array", "expected"), test_cases_input)
 def test_check_input_shape_and_type(input_array: np.ndarray, expected: None):
+    """Test that the check_input_shape_and_type function raises errors correctly."""
     if expected is None:
         check_input_shape_and_type(input_array)
     else:
-        with pytest.raises(ValueError) as err:
+        with pytest.raises(type(expected)) as err:
             check_input_shape_and_type(input_array)
         assert str(err.value) == str(expected)

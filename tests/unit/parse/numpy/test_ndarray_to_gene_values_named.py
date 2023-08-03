@@ -1,17 +1,17 @@
 """Tests for geneweaver.core.parse.numpy.ndarray_to_gene_values_named function."""
-import pytest
-import numpy as np
 from typing import List
 
-from geneweaver.core.schema.batch import GenesetValueInput
+import numpy as np
+import pytest
 from geneweaver.core.parse.numpy import ndarray_to_gene_values_named
+from geneweaver.core.schema.batch import GenesetValueInput
 
 from tests.unit.parse.numpy.const import (
+    missing_symbol_array,
+    missing_value_array,
     valid_labeled_geneset_array,
     valid_labeled_geneset_array_2,
     valid_labeled_geneset_array_3,
-    missing_symbol_array,
-    missing_value_array,
 )
 
 test_cases_gene_values = [
@@ -42,12 +42,13 @@ test_cases_gene_values = [
 ]
 
 
-@pytest.mark.parametrize("geneset_array, expected", test_cases_gene_values)
+@pytest.mark.parametrize(("geneset_array", "expected"), test_cases_gene_values)
 def test_ndarray_to_gene_values_named(
     geneset_array: np.ndarray, expected: List[GenesetValueInput]
 ):
+    """Test that the ndarray_to_gene_values_named function works as expected."""
     if isinstance(expected, ValueError):
-        with pytest.raises(ValueError) as err:
+        with pytest.raises(type(expected)) as err:
             ndarray_to_gene_values_named(geneset_array)
         assert str(err.value) == str(expected)
     else:

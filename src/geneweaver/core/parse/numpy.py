@@ -27,10 +27,7 @@ def ndarray_to_gene_values(geneset_array: np.ndarray) -> List[GenesetValueInput]
     try:
         return ndarray_to_gene_values_named(geneset_array)
     except ValueError:
-        try:
-            return ndarray_to_gene_values_by_idx(geneset_array)
-        except IndexError as e:
-            raise ValueError("Could not map numpy array to GeneValueInput") from e
+        return ndarray_to_gene_values_by_idx(geneset_array)
 
 
 def ndarray_to_gene_values_by_idx(geneset_array: np.ndarray) -> List[GenesetValueInput]:
@@ -43,7 +40,10 @@ def ndarray_to_gene_values_by_idx(geneset_array: np.ndarray) -> List[GenesetValu
     :param geneset_array: The numpy array to convert.
     :return: A set of the values in the numpy array.
     """
-    return [GenesetValueInput(symbol=row[0], value=row[1]) for row in geneset_array]
+    try:
+        return [GenesetValueInput(symbol=row[0], value=row[1]) for row in geneset_array]
+    except IndexError as e:
+        raise ValueError("Input must be a 2-dimensional array") from e
 
 
 def ndarray_to_gene_values_named(geneset_array: np.ndarray) -> List[GenesetValueInput]:
