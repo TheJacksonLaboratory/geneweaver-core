@@ -47,7 +47,7 @@ jobs:
         run: poetry install
       - name: Test with pytest
         run: |
-          poetry run pytest tests \
+          poetry run pytest tests/unit \
           --tb=${{ inputs.show-test-traceback }} \
           --cov=${{ inputs.coverage-module }} \
           --cov-report=term \
