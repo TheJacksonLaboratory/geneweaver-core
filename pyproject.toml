@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "geneweaver-core"
-version = "0.3.0a0"
+version = "0.5.0a0"
 description = "The core of the Jax-Geneweaver Python library"
 authors = ["Jax Computational Sciences <cssc@jax.org>"]
 readme = "README.md"
@@ -15,6 +15,8 @@ packages = [
 python = "^3.9"
 pydantic = { extras = ["dotenv"], version = "^1.10.7" }
 openpyxl = "^3.1.2"
+numpy = "^1.25.2"
+pandas = "^2.0.3"
 
 [tool.poetry.group.dev.dependencies]
 pylint = "^2.15.4"
