@@ -5,8 +5,8 @@ description = "The core of the Jax-Geneweaver Python library"
 authors = ["Jax Computational Sciences <cssc@jax.org>"]
 readme = "README.md"
 license = "Apache-2.0"
-repository = "https://bitbucket.org/jacksonlaboratory/geneweaver-core"
-homepage = "https://bergsalex.github.io/geneweaver-docs/"
+repository = "https://github.com/TheJacksonLaboratory/geneweaver-client"
+homepage = "https://thejacksonlaboratory.github.io/geneweaver-docs/"
 packages = [
     { include = "geneweaver/core", from = "src" },
 ]

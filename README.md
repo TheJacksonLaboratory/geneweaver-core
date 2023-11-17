@@ -1,4 +1,9 @@
 # Geneweaver Core
+
+[![Tests](https://github.com/TheJacksonLaboratory/geneweaver-core/actions/workflows/tests.yml/badge.svg?event=push)](https://github.com/TheJacksonLaboratory/geneweaver-core/actions/workflows/tests.yml)
+[![Style](https://github.com/TheJacksonLaboratory/geneweaver-core/actions/workflows/style.yml/badge.svg?event=push)](https://github.com/TheJacksonLaboratory/geneweaver-core/actions/workflows/style.yml)
+[![Coverage](https://github.com/TheJacksonLaboratory/geneweaver-core/actions/workflows/coverage.yml/badge.svg?event=push)](https://github.com/TheJacksonLaboratory/geneweaver-core/actions/workflows/coverage.yml)
+
 The Geneweaver Core Python library provides shared foundational functionality for the Geneweaver project. 
 It is a dependency of all other Geneweaver Python libraries, and is not intended to be used directly.
 
@@ -48,9 +53,3 @@ The Geneweaver Core library provides the following functionality:
 #### Planned Functionality
 * `geneweaver.core.logging`: Shared logging management
 * `geneweaver.core.utils`: Shared utility functions
-
-
-## Acknowledgements
-This project was developed by the Computational Systems and Synthetic Biology Center at the Jackson Laboratory in
-conjunction with the Baylor University Computational Biology and Bioinformatics Program.
-
