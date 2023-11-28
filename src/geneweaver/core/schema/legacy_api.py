@@ -1,7 +1,7 @@
 """Models needed to work with the legacy API."""
 from typing import List, Optional
 
-from geneweaver.core.enum import GenesetAccess, GenesetScoreType
+from geneweaver.core.enum import GenesetAccess, ScoreType
 from pydantic import BaseModel, HttpUrl
 
 
@@ -25,7 +25,7 @@ class AddGenesetByUserBase(BaseModel):
     gs_abbreviation: str
     gs_description: str
     gs_name: str
-    gs_threshold_type: GenesetScoreType
+    gs_threshold_type: ScoreType
     permissions: GenesetAccess
     publication: Optional[AddGenesetByUserPublication]
     select_groups: List[str]
