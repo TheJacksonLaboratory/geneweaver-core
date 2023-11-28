@@ -1,5 +1,6 @@
 """Parse Excel files for use by the client library."""
-from typing import Dict, List, Optional, Tuple, Union
+from pathlib import Path
+from typing import Callable, Dict, List, Optional, Tuple, Union
 from zipfile import BadZipFile
 
 from geneweaver.core.types import StringOrPath
@@ -134,6 +135,32 @@ def read_row(file_path: str, row_idx: int = 0, sheet_name: str = None) -> List[s
         raise ValueError(f"File does not contain a row at index {row_idx}") from e
 
 
+def read_rows(
+    file_path: StringOrPath,
+    n_rows: int,
+    sheet_name: Optional[str] = None,
+    start_row: int = 0,
+) -> List[List[str]]:
+    """Get the contends of n rows from an Excel (.xlsx) file.
+
+    :param file_path: The file path to the CSV file.
+    :param n_rows: The number of rows to read.
+    :param sheet_name: Name of the sheet to read from. If not provided, the function
+    will read from the active sheet.
+    :param start_row: The row number to start reading from (0-indexed).
+
+    :returns: The contents of n rows from the Excel file.
+    """
+    sheet = get_sheet(file_path, sheet_name)
+    rows = []
+    for row_idx in range(start_row + 1, n_rows):
+        try:
+            rows.append([cell.value for cell in sheet[row_idx]])
+        except IndexError:
+            continue
+    return rows
+
+
 def read_to_dict(
     file_path: StringOrPath, start_row: int = 0, sheet_name: Optional[str] = None
 ) -> List[Dict[str, Union[str, int]]]:
@@ -187,3 +214,78 @@ def read_to_dict_n_rows(
         row_data = {h: cell.value for h, cell in zip(headers, row)}  # noqa: B905
         data.append(row_data)
     return data
+
+
+def default_metadata_cleaner(metadata: str) -> str:
+    """Clean metadata from an Excel file.
+
+    :param metadata: The metadata to clean.
+
+    :returns: The cleaned metadata.
+    """
+    return metadata.replace("\ufeff", "").strip()
+
+
+def read_metadata(
+    file_path: StringOrPath,
+    n_rows: int,
+    sheet_name: Optional[str] = None,
+    start_row: int = 0,
+    metadata_cleaner: Optional[Callable[[str], str]] = default_metadata_cleaner,
+) -> List[str]:
+    """Read the metadata from an Excel file.
+
+    :param file_path: The file path to the CSV or Excel file.
+    :param n_rows: The number of rows of metadata to read.
+    :param sheet_name: Name of the sheet to read from (for Excel files). If not
+    provided, the function will read from the active sheet. Ignored for CSV files.
+    :param start_row: The row to start reading from. Defaults to 0.
+    :param metadata_cleaner: A function to clean the metadata. Defaults to
+    the default_metadata_cleaner function in this namespace.
+
+    :returns: A list of strings representing the metadata from the CSV or Excel file.
+    """
+    rows = read_rows(file_path, n_rows, sheet_name, start_row)
+    return [
+        ",".join([metadata_cleaner(str(r)) for r in row if r != "" and r is not None])
+        for row in rows
+    ]
+
+
+def get_metadata(
+    file_path: Path, sheet: Optional[str] = None
+) -> Tuple[List[str], List[List[str]], List[List[str]], List[int], int]:
+    """Get the metadata from an Excel file.
+
+    :param file_path: The file path to the Excel file.
+    :param sheet: The name of the sheet to read from. If not provided, the function
+    will read for all sheets in the file.
+
+    :returns: A tuple containing:
+        - A list of sheet names
+        - A list of lists of metadata for each sheet
+        - A list of lists of headers for each sheet
+        - A list of header indices for each sheet
+        - The number of sheets in the file
+    """
+    if sheet:
+        sheet_names = [sheet]
+        headers, headers_idx = get_headers(file_path, sheet_name=sheet)
+        sheet_metadata = [read_metadata(file_path, headers_idx, sheet_name=sheet)]
+        headers, headers_idx = [headers], [headers_idx]
+        n_sheets = 1
+    else:
+        sheet_names = get_sheet_names(file_path)
+        headers, headers_idx = [], []
+        for s in sheet_names:
+            h, h_idx = get_headers(file_path, sheet_name=s)
+            headers.append(h)
+            headers_idx.append(h_idx)
+
+        sheet_metadata = [
+            read_metadata(file_path, h, sheet_name=s)
+            for s, h in zip(sheet_names, headers_idx)  # noqa: B905
+        ]
+        n_sheets = len(sheet_names)
+
+    return sheet_names, sheet_metadata, headers, headers_idx, n_sheets
