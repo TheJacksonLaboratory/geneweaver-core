@@ -3,8 +3,8 @@ import pytest
 from geneweaver.core.enum import (
     CurationAssignment,
     GenesetAccess,
-    ScoreType,
     GenesetScoreTypeStr,
+    ScoreType,
 )
 
 

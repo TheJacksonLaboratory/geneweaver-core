@@ -1,8 +1,8 @@
 """Module for defining schemas for batch endpoints."""
 # ruff: noqa: N805, ANN001, ANN101
-from typing import List, Optional
+from typing import List, Optional, Union
 
-from geneweaver.core.enum import GeneIdentifier, Species
+from geneweaver.core.enum import GeneIdentifier, Microarray, Species
 from geneweaver.core.parse.score import parse_score
 from geneweaver.core.schema.gene import GeneValue
 from geneweaver.core.schema.messages import MessageResponse
@@ -76,7 +76,7 @@ class BatchUploadGeneset(BaseModel):
 
     score: GenesetScoreType
     species: Species
-    gene_id_type: GeneIdentifier
+    gene_id_type: Union[GeneIdentifier, Microarray]
     pubmed_id: Optional[str] = None
     uberon_id: Optional[str] = None
     private: bool = True
@@ -85,6 +85,31 @@ class BatchUploadGeneset(BaseModel):
     name: str
     description: str = ""
     values: List[GeneValue]
+
+    @validator("species", pre=True)
+    def initialize_species(cls, v) -> Species:
+        """Initialize species."""
+        if isinstance(v, Species):
+            return v
+        elif isinstance(v, str):
+            return Species[v.replace(" ", "_").upper()]
+        return Species(v)
+
+    @validator("gene_id_type", pre=True)
+    def initialize_gene_id_type(cls, v) -> Union[GeneIdentifier, Microarray]:
+        """Initialize gene id type."""
+        if isinstance(v, GeneIdentifier):
+            return v
+        try:
+            if isinstance(v, str):
+                return GeneIdentifier[v.replace(" ", "_").upper()]
+            return GeneIdentifier(v)
+        except KeyError:
+            if isinstance(v, str):
+                return Microarray[
+                    v.upper().replace("MICROARRAY", "").strip().replace(" ", "_")
+                ]
+            return Microarray(v)
 
     @validator("score", pre=True)
     def initialize_score(cls, v) -> GenesetScoreType:
