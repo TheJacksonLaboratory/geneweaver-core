@@ -21,7 +21,7 @@ def gene_data() -> dict:
 @pytest.fixture()
 def gene_value_data() -> dict:
     """Provide example gene value data."""
-    return {"gene-id": "1", "value": "1"}
+    return {"symbol": "1", "value": "1"}
 
 
 @pytest.fixture()
@@ -51,14 +51,14 @@ def geneset_upload_data() -> dict:
     return {
         "name": "name",
         "label": "label",
-        "score-type": 1,
+        "score_type": 1,
         "description": "description",
-        "pubmed-id": "1",
+        "pubmed_id": "1",
         "access": "private",
         "groups": ["group"],
         "species": "species",
-        "gene-identifier": "gene_identifier",
-        "gene-list": [{"gene-id": "1", "value": "1"}],
+        "gene_identifier": "gene_identifier",
+        "gene_list": [{"symbol": "1", "value": "1"}],
     }
 
 

@@ -1,8 +1,8 @@
 """Gene schema."""
 import datetime
-from typing import List, Optional
+from typing import Any, List, Optional
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 
 class Gene(BaseModel):
@@ -29,10 +29,30 @@ class GeneRow(BaseModel):
 
 
 class GeneValue(BaseModel):
-    """Schema for summary Gene values."""
+    """A gene value."""
 
-    gene_id: str = Field(..., alias="gene-id")
-    value: str
+    symbol: str
+    value: float
+
+    class Config:
+        """Pydantic config."""
+
+        allow_mutation = False
+
+    def __str__(self: "GeneValue") -> str:
+        """Return the gene symbol."""
+        return f"{self.symbol}\t{self.value}"
+
+    def __hash__(self: "GeneValue") -> int:
+        """Hash the gene symbol (without value)."""
+        # TODO note about hashing collisions
+        return hash(self.symbol)
+
+    def __eq__(self: "GeneValue", other: Any) -> bool:  # noqa: ANN401
+        """Compare the gene symbol (without value)."""
+        if isinstance(other, GeneValue):
+            return self.symbol == other.symbol
+        return False
 
 
 class GeneDatabase(BaseModel):

@@ -26,8 +26,8 @@ def test_gene_schema(gene_data: dict) -> None:
 def test_gene_value_schema(gene_value_data: dict) -> None:
     """Test creating a gene value from a dict."""
     gene_value = GeneValue(**gene_value_data)
-    assert gene_value.gene_id == gene_value_data["gene-id"]
-    assert gene_value.value == gene_value_data["value"]
+    assert gene_value.symbol == gene_value_data["symbol"]
+    assert gene_value.value == float(gene_value_data["value"])
 
 
 def test_geneset_schema(geneset_data: dict) -> None:
@@ -54,14 +54,14 @@ def test_geneset_upload_schema(geneset_upload_data: dict) -> None:
     geneset_upload = GenesetUpload(**geneset_upload_data)
     assert geneset_upload.name == geneset_upload_data["name"]
     assert geneset_upload.label == geneset_upload_data["label"]
-    assert geneset_upload.score_type == geneset_upload_data["score-type"]
+    assert geneset_upload.score_type == geneset_upload_data["score_type"]
     assert geneset_upload.description == geneset_upload_data["description"]
-    assert geneset_upload.pubmed_id == geneset_upload_data["pubmed-id"]
+    assert geneset_upload.pubmed_id == geneset_upload_data["pubmed_id"]
     assert geneset_upload.access == geneset_upload_data["access"]
     assert geneset_upload.groups == geneset_upload_data["groups"]
     assert geneset_upload.species == geneset_upload_data["species"]
-    assert geneset_upload.gene_identifier == geneset_upload_data["gene-identifier"]
-    assert len(geneset_upload.gene_list) == len(geneset_upload_data["gene-list"])
+    assert geneset_upload.gene_identifier == geneset_upload_data["gene_identifier"]
+    assert len(geneset_upload.gene_list) == len(geneset_upload_data["gene_list"])
 
 
 def test_batch_upload_schema(batch_upload_data: dict) -> None:
