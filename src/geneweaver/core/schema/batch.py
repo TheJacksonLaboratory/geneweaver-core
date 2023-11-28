@@ -78,7 +78,6 @@ class BatchUploadGeneset(BaseModel):
     species: Species
     gene_id_type: Union[GeneIdentifier, Microarray]
     pubmed_id: Optional[str] = None
-    uberon_id: Optional[str] = None
     private: bool = True
     curation_id: Optional[int] = None
     abbreviation: str

@@ -26,18 +26,18 @@ def format_batch_file(genesets: List[BatchUploadGeneset]) -> str:
     return data_str
 
 
-def format_genest_metadata(geneset: BatchUploadGeneset) -> str:
+def format_geneset_metadata(geneset: BatchUploadGeneset) -> str:
     """Format geneset metadata for a batch upload file.
 
     :param geneset: The geneset to format.
 
     :return: A string containing the geneset metadata in batch upload format.
     """
-    geneset_dict = geneset.dict(exclude={"values", "curation_id"})
     data_str = "\n".join(
         (
-            f"{INV_CHAR_MAP[key] if key in INV_CHAR_MAP else key}={value}"
-            for key, value in geneset_dict.items()
+            f"{INV_CHAR_MAP[key] if key in INV_CHAR_MAP else key} {str(value)}"
+            for key, value in geneset
+            if key != "values"
         )
     )
     data_str += "\n\n"
@@ -61,6 +61,6 @@ def format_geneset(geneset: BatchUploadGeneset) -> str:
 
     :return: A string containing the geneset in batch upload format.
     """
-    data_str = format_genest_metadata(geneset)
+    data_str = format_geneset_metadata(geneset)
     data_str += format_geneset_values(geneset)
     return data_str

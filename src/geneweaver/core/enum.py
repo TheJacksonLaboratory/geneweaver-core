@@ -70,6 +70,10 @@ class Species(int, Enum):
     GALLUS_GALLUS = 10
     CANIS_FAMILIARIS = 11
 
+    def __str__(self) -> str:
+        """Render as a string."""
+        return self.name
+
 
 class GeneIdentifier(int, Enum):
     """Gene Identifier types to match Geneweaver database."""
@@ -90,6 +94,10 @@ class GeneIdentifier(int, Enum):
     SGD = 16
     MIRBASE = 17
     CGNC = 20
+
+    def __str__(self) -> str:
+        """Render as a string."""
+        return self.name
 
 
 class Microarray(int, Enum):
@@ -140,3 +148,7 @@ class Microarray(int, Enum):
     ILLUMINA_MOUSEREF_8_V2_0 = 142
     ILLUMINA_MOUSEWG_6_V1_1 = 143
     ILLUMINA_MOUSEWG_6_V2_0 = 144
+
+    def __str__(self) -> str:
+        """Render as a string."""
+        return self.name
