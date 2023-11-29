@@ -97,7 +97,7 @@ class BatchUploadGeneset(BaseModel):
     @validator("gene_id_type", pre=True)
     def initialize_gene_id_type(cls, v) -> Union[GeneIdentifier, Microarray]:
         """Initialize gene id type."""
-        if isinstance(v, GeneIdentifier):
+        if isinstance(v, GeneIdentifier) or isinstance(v, Microarray):
             return v
         try:
             if isinstance(v, str):
