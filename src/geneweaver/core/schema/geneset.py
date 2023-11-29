@@ -1,10 +1,10 @@
 """Schemas for geneset."""
 import datetime
-from typing import List
+from typing import List, Optional
 
-from geneweaver.core.enum import GenesetAccess, GenesetScoreType
+from geneweaver.core.enum import GenesetAccess, ScoreType
 from geneweaver.core.schema.gene import GeneValue
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 
 
 class Geneset(BaseModel):
@@ -37,14 +37,14 @@ class GenesetUpload(BaseModel):
 
     name: str
     label: str
-    score_type: GenesetScoreType = Field(..., alias="score-type")
+    score_type: ScoreType
     description: str
-    pubmed_id: str = Field(..., alias="pubmed-id")
+    pubmed_id: Optional[str]
     access: GenesetAccess
-    groups: List[str]
+    groups: List[str] = []
     species: str
-    gene_identifier: str = Field(..., alias="gene-identifier")
-    gene_list: List[GeneValue] = Field(..., alias="gene-list")
+    gene_identifier: str
+    gene_list: List[GeneValue]
 
 
 class BatchUpload(BaseModel):

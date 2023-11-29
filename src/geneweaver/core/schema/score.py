@@ -1,18 +1,8 @@
 """Pydantic schema for defining score types."""
-from enum import Enum
 from typing import Optional
 
+from geneweaver.core.enum import ScoreType
 from pydantic import BaseModel
-
-
-class ScoreType(Enum):
-    """Enum for defining score types."""
-
-    P_VALUE = 1
-    Q_VALUE = 2
-    BINARY = 3
-    CORRELATION = 4
-    EFFECT = 5
 
 
 class GenesetScoreType(BaseModel):
@@ -21,3 +11,10 @@ class GenesetScoreType(BaseModel):
     score_type: ScoreType
     threshold_low: Optional[float] = None
     threshold: float = 0.05
+
+    def __str__(self: "GenesetScoreType") -> str:
+        """Return a string representation of the score type."""
+        name = self.score_type.name.title().replace("_", "-")
+        if self.threshold_low:
+            return f"{self.threshold_low} < {name} < {self.threshold}"
+        return f"{name} < {self.threshold}"

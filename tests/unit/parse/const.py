@@ -16,7 +16,7 @@ EXAMPLE_BATCH_FILE = """
 
 ! P-Value < 0.001
 @ Mus musculus
-% microarray Mouse Expression Array 430 Set
+% microarray Affymetrix Mouse Expression 430 Set
 P 19958391
 A Private
 

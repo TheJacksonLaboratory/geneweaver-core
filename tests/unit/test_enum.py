@@ -3,8 +3,8 @@ import pytest
 from geneweaver.core.enum import (
     CurationAssignment,
     GenesetAccess,
-    GenesetScoreType,
     GenesetScoreTypeStr,
+    ScoreType,
 )
 
 
@@ -56,20 +56,20 @@ def test_geneset_access_from_string() -> None:
 
 def test_geneset_score_type() -> None:
     """Test the GenesetScoreType enum."""
-    assert GenesetScoreType.P_VALUE == 1
-    assert GenesetScoreType.Q_VALUE == 2
-    assert GenesetScoreType.BINARY == 3
-    assert GenesetScoreType.CORRELATION == 4
-    assert GenesetScoreType.EFFECT == 5
+    assert ScoreType.P_VALUE == 1
+    assert ScoreType.Q_VALUE == 2
+    assert ScoreType.BINARY == 3
+    assert ScoreType.CORRELATION == 4
+    assert ScoreType.EFFECT == 5
 
 
 def test_geneset_score_type_from_int() -> None:
     """Test the GenesetScoreType enum creation from an int."""
-    assert GenesetScoreType(1) == GenesetScoreType.P_VALUE
-    assert GenesetScoreType(2) == GenesetScoreType.Q_VALUE
-    assert GenesetScoreType(3) == GenesetScoreType.BINARY
-    assert GenesetScoreType(4) == GenesetScoreType.CORRELATION
-    assert GenesetScoreType(5) == GenesetScoreType.EFFECT
+    assert ScoreType(1) == ScoreType.P_VALUE
+    assert ScoreType(2) == ScoreType.Q_VALUE
+    assert ScoreType(3) == ScoreType.BINARY
+    assert ScoreType(4) == ScoreType.CORRELATION
+    assert ScoreType(5) == ScoreType.EFFECT
 
 
 def test_geneset_score_type_str() -> None:

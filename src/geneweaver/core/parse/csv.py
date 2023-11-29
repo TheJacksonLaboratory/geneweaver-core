@@ -157,6 +157,6 @@ def read_to_dict_n_rows(
         if len(data) == 0:
             raise EmptyFileError(
                 file_path,
-                f"Selected start row ({start_row}) and " f"n ({n}) yielded no results.",
+                f"Selected start row ({start_row}) and n ({n}) yielded no results.",
             )
     return data
