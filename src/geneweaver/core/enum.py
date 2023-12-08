@@ -21,6 +21,10 @@ class GenesetScoreTypeStr(str, Enum):
     CORRELATION = "correlation"
     EFFECT = "effect"
 
+    def __str__(self) -> str:
+        """Render as a string."""
+        return "-".join(part.capitalize() for part in self.name.split("_"))
+
 
 class ScoreType(int, Enum):
     """Integer based Enum for the different types of geneset scores."""
@@ -30,6 +34,10 @@ class ScoreType(int, Enum):
     BINARY = 3
     CORRELATION = 4
     EFFECT = 5
+
+    def __str__(self) -> str:
+        """Render as a string."""
+        return "-".join(part.capitalize() for part in self.name.split("_"))
 
 
 class GenesetAccess(str, Enum):
@@ -72,7 +80,7 @@ class Species(int, Enum):
 
     def __str__(self) -> str:
         """Render as a string."""
-        return self.name
+        return self.name.replace("_", " ").capitalize()
 
 
 class GeneIdentifier(int, Enum):
@@ -97,6 +105,8 @@ class GeneIdentifier(int, Enum):
 
     def __str__(self) -> str:
         """Render as a string."""
+        if len(self.name) > 4:
+            return " ".join(part.capitalize() for part in self.name.split("_"))
         return self.name
 
 
@@ -151,4 +161,5 @@ class Microarray(int, Enum):
 
     def __str__(self) -> str:
         """Render as a string."""
-        return self.name
+        formatted = " ".join(part.capitalize() for part in self.name.split("_"))
+        return f"microarray {formatted}"
