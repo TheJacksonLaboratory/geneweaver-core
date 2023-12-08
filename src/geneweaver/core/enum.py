@@ -23,7 +23,7 @@ class GenesetScoreTypeStr(str, Enum):
 
     def __str__(self) -> str:
         """Render as a string."""
-        return '-'.join(part.capitalize() for part in self.name.split('_'))
+        return "-".join(part.capitalize() for part in self.name.split("_"))
 
 
 class ScoreType(int, Enum):
@@ -37,7 +37,7 @@ class ScoreType(int, Enum):
 
     def __str__(self) -> str:
         """Render as a string."""
-        return '-'.join(part.capitalize() for part in self.name.split('_'))
+        return "-".join(part.capitalize() for part in self.name.split("_"))
 
 
 class GenesetAccess(str, Enum):
@@ -80,7 +80,7 @@ class Species(int, Enum):
 
     def __str__(self) -> str:
         """Render as a string."""
-        return self.name.replace('_', ' ').capitalize()
+        return self.name.replace("_", " ").capitalize()
 
 
 class GeneIdentifier(int, Enum):
@@ -106,7 +106,7 @@ class GeneIdentifier(int, Enum):
     def __str__(self) -> str:
         """Render as a string."""
         if len(self.name) > 4:
-            return ' '.join(part.capitalize() for part in self.name.split('_'))
+            return " ".join(part.capitalize() for part in self.name.split("_"))
         return self.name
 
 
@@ -161,5 +161,5 @@ class Microarray(int, Enum):
 
     def __str__(self) -> str:
         """Render as a string."""
-        formatted = ' '.join(part.capitalize() for part in self.name.split('_'))
+        formatted = " ".join(part.capitalize() for part in self.name.split("_"))
         return f"microarray {formatted}"
