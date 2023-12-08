@@ -115,11 +115,15 @@ class BatchUploadGeneset(BaseModel):
         """Initialize score type."""
         if isinstance(v, GenesetScoreType):
             return v
+        elif isinstance(v, dict):
+            return GenesetScoreType(**v)
         return parse_score(v)
 
     @validator("private", pre=True)
     def private_to_bool(cls, v) -> bool:
         """Convert private str to bool."""
+        if isinstance(v, bool):
+            return v
         return v.lower() != "public"
 
     @validator("curation_id", pre=True)
