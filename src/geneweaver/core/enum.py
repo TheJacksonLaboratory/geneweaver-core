@@ -1,5 +1,5 @@
 """Enum classes for the GeneWeaver project."""
-from enum import IntEnum, Enum
+from enum import Enum, IntEnum
 
 
 class CurationAssignment(IntEnum):
@@ -12,7 +12,7 @@ class CurationAssignment(IntEnum):
     APPROVED = 5
 
 
-class GenesetScoreTypeStr(Enum):
+class GenesetScoreTypeStr(str, Enum):
     """Enum for the different types of geneset scores."""
 
     P_VALUE = "p-value"
@@ -40,14 +40,14 @@ class ScoreType(IntEnum):
         return "-".join(part.capitalize() for part in self.name.split("_"))
 
 
-class GenesetAccess(Enum):
+class GenesetAccess(str, Enum):
     """Enum for the different types of geneset access."""
 
     PRIVATE = "private"
     PUBLIC = "public"
 
 
-class AnnotationType(Enum):
+class AnnotationType(str, Enum):
     """Enum for the different types of annotations."""
 
     MONARCH = "monarch"
