@@ -1,10 +1,16 @@
 """Test the enum module."""
+from enum import Enum, IntEnum
+
 import pytest
 from geneweaver.core.enum import (
+    AdminLevel,
     CurationAssignment,
+    GeneIdentifier,
     GenesetAccess,
     GenesetScoreTypeStr,
+    Microarray,
     ScoreType,
+    Species,
 )
 
 
@@ -45,7 +51,7 @@ def test_curation_assignment_from_int(
 )
 def test_geneset_access(attribute: str, expected: str) -> None:
     """Test the GenesetAccess enum."""
-    assert getattr(GenesetAccess, attribute) == expected
+    assert getattr(GenesetAccess, attribute).value == expected
 
 
 def test_geneset_access_from_string() -> None:
@@ -88,3 +94,14 @@ def test_geneset_score_type_str_from_string() -> None:
     assert GenesetScoreTypeStr("binary") == GenesetScoreTypeStr.BINARY
     assert GenesetScoreTypeStr("correlation") == GenesetScoreTypeStr.CORRELATION
     assert GenesetScoreTypeStr("effect") == GenesetScoreTypeStr.EFFECT
+
+
+@pytest.mark.parametrize(
+    "enum_class",
+    [CurationAssignment, ScoreType, AdminLevel, Species, GeneIdentifier, Microarray],
+)
+def test_is_int_enum(enum_class):
+    """Test that Integer Enums are defined as IntEnum."""
+    assert issubclass(enum_class, int)
+    assert issubclass(enum_class, Enum)
+    assert issubclass(enum_class, IntEnum)
