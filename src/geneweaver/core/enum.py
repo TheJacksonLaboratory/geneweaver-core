@@ -1,8 +1,8 @@
 """Enum classes for the GeneWeaver project."""
-from enum import Enum
+from enum import Enum, IntEnum
 
 
-class CurationAssignment(int, Enum):
+class CurationAssignment(IntEnum):
     """Enum for the different types of curation assignments."""
 
     UNASSIGNED = 1
@@ -26,7 +26,7 @@ class GenesetScoreTypeStr(str, Enum):
         return "-".join(part.capitalize() for part in self.name.split("_"))
 
 
-class ScoreType(int, Enum):
+class ScoreType(IntEnum):
     """Integer based Enum for the different types of geneset scores."""
 
     P_VALUE = 1
@@ -54,7 +54,7 @@ class AnnotationType(str, Enum):
     NCBO = "ncbo"
 
 
-class AdminLevel(int, Enum):
+class AdminLevel(IntEnum):
     """Enum for the different levels of admin access."""
 
     NORMAL_USER = 0
@@ -63,7 +63,7 @@ class AdminLevel(int, Enum):
     ADMIN_WITH_DEBUG = 3
 
 
-class Species(int, Enum):
+class Species(IntEnum):
     """Species enum to match Geneweaver database."""
 
     ALL = 0
@@ -83,7 +83,7 @@ class Species(int, Enum):
         return self.name.replace("_", " ").capitalize()
 
 
-class GeneIdentifier(int, Enum):
+class GeneIdentifier(IntEnum):
     """Gene Identifier types to match Geneweaver database."""
 
     ENTREZ = 1
@@ -110,7 +110,7 @@ class GeneIdentifier(int, Enum):
         return self.name
 
 
-class Microarray(int, Enum):
+class Microarray(IntEnum):
     """Microarray types (does not match geneweaver database)."""
 
     AFFYMETRIX_C_ELEGANS_GENOME_ARRAY = 100
