@@ -8,6 +8,7 @@ class FileType(str, Enum):
     TEXT = "txt"
     EXCEL = "xlsx"
     CSV = "csv"
+    BATCH = "gw"
 
 
 class GeneweaverFileType(str, Enum):
