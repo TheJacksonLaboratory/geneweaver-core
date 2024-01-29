@@ -54,7 +54,7 @@ def test_geneset_upload_schema(geneset_upload_data: dict) -> None:
     geneset_upload = GenesetUpload(**geneset_upload_data)
     assert geneset_upload.name == geneset_upload_data["name"]
     assert geneset_upload.label == geneset_upload_data["label"]
-    assert geneset_upload.score_type == geneset_upload_data["score_type"]
+    assert str(geneset_upload.score_type) == geneset_upload_data["score_type"]
     assert geneset_upload.description == geneset_upload_data["description"]
     assert geneset_upload.pubmed_id == geneset_upload_data["pubmed_id"]
     assert geneset_upload.access == geneset_upload_data["access"]

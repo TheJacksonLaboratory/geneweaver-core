@@ -2,7 +2,7 @@
 import datetime
 from typing import List, Optional
 
-from geneweaver.core.enum import AdminLevel
+from geneweaver.core.enum import AdminLevelInt
 from geneweaver.core.schema.stubgenerator import StubGenerator
 from pydantic import BaseModel
 
@@ -22,7 +22,7 @@ class User(UserRequiredFields):
     first_name: Optional[str] = None
     last_name: Optional[str] = None
     password: Optional[str] = None
-    admin: AdminLevel = AdminLevel.NORMAL_USER
+    admin: AdminLevelInt = AdminLevelInt.NORMAL_USER
     last_seen: Optional[datetime.datetime] = None
     create: Optional[datetime.date] = None
     ip_address: Optional[str] = None

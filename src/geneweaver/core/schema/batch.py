@@ -2,7 +2,7 @@
 # ruff: noqa: N805, ANN001, ANN101
 from typing import List, Optional, Union
 
-from geneweaver.core.enum import GeneIdentifier, Microarray, Species
+from geneweaver.core.enum import GeneIdentifierInt, MicroarrayInt, SpeciesInt
 from geneweaver.core.parse.score import parse_score
 from geneweaver.core.schema.gene import GeneValue
 from geneweaver.core.schema.messages import MessageResponse
@@ -75,8 +75,8 @@ class BatchUploadGeneset(BaseModel):
     """Class for defining a geneset uploaded using a batch upload file."""
 
     score: GenesetScoreType
-    species: Species
-    gene_id_type: Union[GeneIdentifier, Microarray]
+    species: SpeciesInt
+    gene_id_type: Union[GeneIdentifierInt, MicroarrayInt]
     pubmed_id: Optional[str] = None
     private: bool = True
     curation_id: Optional[int] = None
@@ -86,29 +86,29 @@ class BatchUploadGeneset(BaseModel):
     values: List[GeneValue]
 
     @validator("species", pre=True)
-    def initialize_species(cls, v) -> Species:
+    def initialize_species(cls, v) -> SpeciesInt:
         """Initialize species."""
-        if isinstance(v, Species):
+        if isinstance(v, SpeciesInt):
             return v
         elif isinstance(v, str):
-            return Species[v.replace(" ", "_").upper()]
-        return Species(v)
+            return SpeciesInt[v.replace(" ", "_").upper()]
+        return SpeciesInt(v)
 
     @validator("gene_id_type", pre=True)
-    def initialize_gene_id_type(cls, v) -> Union[GeneIdentifier, Microarray]:
+    def initialize_gene_id_type(cls, v) -> Union[GeneIdentifierInt, MicroarrayInt]:
         """Initialize gene id type."""
-        if isinstance(v, GeneIdentifier) or isinstance(v, Microarray):
+        if isinstance(v, GeneIdentifierInt) or isinstance(v, MicroarrayInt):
             return v
         try:
             if isinstance(v, str):
-                return GeneIdentifier[v.replace(" ", "_").upper()]
-            return GeneIdentifier(v)
+                return GeneIdentifierInt[v.replace(" ", "_").upper()]
+            return GeneIdentifierInt(v)
         except KeyError:
             if isinstance(v, str):
-                return Microarray[
+                return MicroarrayInt[
                     v.upper().replace("MICROARRAY", "").strip().replace(" ", "_")
                 ]
-            return Microarray(v)
+            return MicroarrayInt(v)
 
     @validator("score", pre=True)
     def initialize_score(cls, v) -> GenesetScoreType:

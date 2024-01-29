@@ -4,7 +4,7 @@ import string
 from typing import List, Union
 
 import pytest
-from geneweaver.core.enum import GeneIdentifier, Microarray, ScoreType, Species
+from geneweaver.core.enum import GeneIdentifierInt, MicroarrayInt, ScoreType, SpeciesInt
 from geneweaver.core.schema.batch import BatchUploadGeneset
 from geneweaver.core.schema.gene import GeneValue
 from geneweaver.core.schema.score import GenesetScoreType
@@ -14,13 +14,13 @@ random.seed(0)
 MOCK_GENE_CHARACTERS = string.ascii_letters + string.digits + "-_"
 MOCK_FLOAT_VALUES = [0.55, 0.136, 0.01, 0.99, -0.53]
 SCORE_TYPES = [s for s in ScoreType]
-GENE_IDS = [g for g in GeneIdentifier]
-MICROARRAYS = [m for m in Microarray]
-SPECIES = [s for s in Species]
+GENE_IDS = [g for g in GeneIdentifierInt]
+MICROARRAYS = [m for m in MicroarrayInt]
+SPECIES = [s for s in SpeciesInt]
 ALL_GENE_IDS = GENE_IDS + MICROARRAYS
 ONE_GENE_ID_ONE_MICROARRAY = [
-    GeneIdentifier.ENSEMBLE_GENE,
-    Microarray.AFFYMETRIX_MOUSE_EXPRESSION_430_SET,
+    GeneIdentifierInt.ENSEMBLE_GENE,
+    MicroarrayInt.AFFYMETRIX_MOUSE_EXPRESSION_430_SET,
 ]
 
 
@@ -59,31 +59,31 @@ def mock_gene_value(request) -> GeneValue:
 
 
 @pytest.fixture(params=SPECIES)
-def species(request) -> Species:
+def species(request) -> SpeciesInt:
     """Return a species enum value."""
     return request.param
 
 
 @pytest.fixture(params=GENE_IDS)
-def gene_identifier(request) -> GeneIdentifier:
+def gene_identifier(request) -> GeneIdentifierInt:
     """Return a gene identifier enum value."""
     return request.param
 
 
 @pytest.fixture(params=MICROARRAYS)
-def microarray(request) -> Microarray:
+def microarray(request) -> MicroarrayInt:
     """Return a microarray enum value."""
     return request.param
 
 
 @pytest.fixture(params=ALL_GENE_IDS)
-def any_gene_identifier(request) -> Union[GeneIdentifier, Microarray]:
+def any_gene_identifier(request) -> Union[GeneIdentifierInt, MicroarrayInt]:
     """Return a gene identifier or microarray enum value."""
     return request.param
 
 
 @pytest.fixture(params=ONE_GENE_ID_ONE_MICROARRAY)
-def one_gene_id_one_microarray(request) -> Union[GeneIdentifier, Microarray]:
+def one_gene_id_one_microarray(request) -> Union[GeneIdentifierInt, MicroarrayInt]:
     """Return a gene identifier or microarray enum value."""
     return request.param
 
@@ -108,7 +108,7 @@ def mock_batch_upload_geneset_all_species_scores(
     return BatchUploadGeneset(
         score=geneset_score_type,
         species=species,
-        gene_id_type=GeneIdentifier.ENSEMBLE_GENE,
+        gene_id_type=GeneIdentifierInt.ENSEMBLE_GENE,
         abbreviation="MOCK",
         name="Mock Species Geneset",
         description="Mock geneset for testing.",
@@ -157,8 +157,8 @@ def mock_empty_geneset() -> BatchUploadGeneset:
     """Return a mock batch upload geneset instance without any values."""
     return BatchUploadGeneset(
         score=GenesetScoreType(score_type=ScoreType.BINARY),
-        species=Species.MUS_MUSCULUS,
-        gene_id_type=GeneIdentifier.ENSEMBLE_GENE,
+        species=SpeciesInt.MUS_MUSCULUS,
+        gene_id_type=GeneIdentifierInt.ENSEMBLE_GENE,
         abbreviation="None",
         name="None",
         description="None",

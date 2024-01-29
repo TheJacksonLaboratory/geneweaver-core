@@ -3,14 +3,14 @@ from enum import Enum, IntEnum
 
 import pytest
 from geneweaver.core.enum import (
-    AdminLevel,
-    CurationAssignment,
-    GeneIdentifier,
+    AdminLevelInt,
+    CurationAssignmentInt,
+    GeneIdentifierInt,
     GenesetAccess,
-    GenesetScoreTypeStr,
-    Microarray,
+    MicroarrayInt,
     ScoreType,
-    Species,
+    ScoreTypeInt,
+    SpeciesInt,
 )
 
 
@@ -25,25 +25,25 @@ from geneweaver.core.enum import (
     ],
 )
 def test_curation_assignment(attribute: str, expected: int) -> None:
-    """Test the CurationAssignment enum."""
-    assert getattr(CurationAssignment, attribute) == expected
+    """Test the CurationAssignmentInt enum."""
+    assert getattr(CurationAssignmentInt, attribute) == expected
 
 
 @pytest.mark.parametrize(
     ("int_value", "expected"),
     [
-        (1, CurationAssignment.UNASSIGNED),
-        (2, CurationAssignment.ASSIGNED),
-        (3, CurationAssignment.READY_FOR_REVIEW),
-        (4, CurationAssignment.REVIEWED),
-        (5, CurationAssignment.APPROVED),
+        (1, CurationAssignmentInt.UNASSIGNED),
+        (2, CurationAssignmentInt.ASSIGNED),
+        (3, CurationAssignmentInt.READY_FOR_REVIEW),
+        (4, CurationAssignmentInt.REVIEWED),
+        (5, CurationAssignmentInt.APPROVED),
     ],
 )
 def test_curation_assignment_from_int(
-    int_value: int, expected: CurationAssignment
+    int_value: int, expected: CurationAssignmentInt
 ) -> None:
-    """Test the CurationAssignment enum creation from an int."""
-    assert CurationAssignment(int_value) == expected
+    """Test the CurationAssignmentInt enum creation from an int."""
+    assert CurationAssignmentInt(int_value) == expected
 
 
 @pytest.mark.parametrize(
@@ -61,44 +61,51 @@ def test_geneset_access_from_string() -> None:
 
 
 def test_geneset_score_type() -> None:
-    """Test the GenesetScoreType enum."""
-    assert ScoreType.P_VALUE == 1
-    assert ScoreType.Q_VALUE == 2
-    assert ScoreType.BINARY == 3
-    assert ScoreType.CORRELATION == 4
-    assert ScoreType.EFFECT == 5
+    """Test the GenesetScoreTypeInt enum."""
+    assert ScoreTypeInt.P_VALUE == 1
+    assert ScoreTypeInt.Q_VALUE == 2
+    assert ScoreTypeInt.BINARY == 3
+    assert ScoreTypeInt.CORRELATION == 4
+    assert ScoreTypeInt.EFFECT == 5
 
 
 def test_geneset_score_type_from_int() -> None:
-    """Test the GenesetScoreType enum creation from an int."""
-    assert ScoreType(1) == ScoreType.P_VALUE
-    assert ScoreType(2) == ScoreType.Q_VALUE
-    assert ScoreType(3) == ScoreType.BINARY
-    assert ScoreType(4) == ScoreType.CORRELATION
-    assert ScoreType(5) == ScoreType.EFFECT
+    """Test the GenesetScoreTypeInt enum creation from an int."""
+    assert ScoreTypeInt(1) == ScoreTypeInt.P_VALUE
+    assert ScoreTypeInt(2) == ScoreTypeInt.Q_VALUE
+    assert ScoreTypeInt(3) == ScoreTypeInt.BINARY
+    assert ScoreTypeInt(4) == ScoreTypeInt.CORRELATION
+    assert ScoreTypeInt(5) == ScoreTypeInt.EFFECT
 
 
 def test_geneset_score_type_str() -> None:
-    """Test the GenesetScoreTypeStr enum."""
-    assert GenesetScoreTypeStr.P_VALUE == "p-value"
-    assert GenesetScoreTypeStr.Q_VALUE == "q-value"
-    assert GenesetScoreTypeStr.BINARY == "binary"
-    assert GenesetScoreTypeStr.CORRELATION == "correlation"
-    assert GenesetScoreTypeStr.EFFECT == "effect"
+    """Test the ScoreTypeInt enum."""
+    assert str(ScoreType.P_VALUE) == "p-value"
+    assert str(ScoreType.Q_VALUE) == "q-value"
+    assert str(ScoreType.BINARY) == "binary"
+    assert str(ScoreType.CORRELATION) == "correlation"
+    assert str(ScoreType.EFFECT) == "effect"
 
 
 def test_geneset_score_type_str_from_string() -> None:
-    """Test the GenesetScoreTypeStr enum creation from a string."""
-    assert GenesetScoreTypeStr("p-value") == GenesetScoreTypeStr.P_VALUE
-    assert GenesetScoreTypeStr("q-value") == GenesetScoreTypeStr.Q_VALUE
-    assert GenesetScoreTypeStr("binary") == GenesetScoreTypeStr.BINARY
-    assert GenesetScoreTypeStr("correlation") == GenesetScoreTypeStr.CORRELATION
-    assert GenesetScoreTypeStr("effect") == GenesetScoreTypeStr.EFFECT
+    """Test the ScoreTypeInt enum creation from a string."""
+    assert ScoreType("p-value") == ScoreType.P_VALUE
+    assert ScoreType("q-value") == ScoreType.Q_VALUE
+    assert ScoreType("binary") == ScoreType.BINARY
+    assert ScoreType("correlation") == ScoreType.CORRELATION
+    assert ScoreType("effect") == ScoreType.EFFECT
 
 
 @pytest.mark.parametrize(
     "enum_class",
-    [CurationAssignment, ScoreType, AdminLevel, Species, GeneIdentifier, Microarray],
+    [
+        CurationAssignmentInt,
+        ScoreTypeInt,
+        AdminLevelInt,
+        SpeciesInt,
+        GeneIdentifierInt,
+        MicroarrayInt,
+    ],
 )
 def test_is_int_enum(enum_class):
     """Test that Integer Enums are defined as IntEnum."""

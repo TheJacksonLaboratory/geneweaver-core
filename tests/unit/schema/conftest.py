@@ -51,7 +51,7 @@ def geneset_upload_data() -> dict:
     return {
         "name": "name",
         "label": "label",
-        "score_type": 1,
+        "score_type": "p-value",
         "description": "description",
         "pubmed_id": "1",
         "access": "private",
