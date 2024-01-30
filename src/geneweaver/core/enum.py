@@ -2,7 +2,49 @@
 from enum import Enum, IntEnum
 
 
-class CurationAssignment(IntEnum):
+class _StrToIntMixin:
+    """Mixin for string based enums that have an integer representation."""
+
+    def __str__(self) -> str:
+        """Render as a string."""
+        return self.value
+
+    def __int__(self) -> int:
+        """Render as an integer."""
+        return int(self._int_class()[self.name])
+
+    def as_int(self) -> IntEnum:
+        """Return the IntEnum version of this enum."""
+        return self._int_class()[self.name]
+
+
+class _IntToStrMixin:
+    """Mixin for integer based enums that have a string representation."""
+
+    def __str__(self) -> str:
+        """Render as a string."""
+        return str(self._str_class()[self.name])
+
+    def as_str(self) -> Enum:
+        """Return the Enum (str) version of this enum."""
+        return self._str_class()[self.name]
+
+
+class CurationAssignment(_StrToIntMixin, Enum):
+    """Enum for the different types of curation assignments."""
+
+    UNASSIGNED = "Unassigned"
+    ASSIGNED = "Assigned"
+    READY_FOR_REVIEW = "Ready for Review"
+    REVIEWED = "Reviewed"
+    APPROVED = "Approved"
+
+    @staticmethod
+    def _int_class() -> Enum:
+        return CurationAssignmentInt
+
+
+class CurationAssignmentInt(_IntToStrMixin, IntEnum):
     """Enum for the different types of curation assignments."""
 
     UNASSIGNED = 1
@@ -11,8 +53,12 @@ class CurationAssignment(IntEnum):
     REVIEWED = 4
     APPROVED = 5
 
+    @staticmethod
+    def _str_class() -> Enum:
+        return CurationAssignment
 
-class GenesetScoreTypeStr(str, Enum):
+
+class ScoreType(_StrToIntMixin, Enum):
     """Enum for the different types of geneset scores."""
 
     P_VALUE = "p-value"
@@ -21,12 +67,12 @@ class GenesetScoreTypeStr(str, Enum):
     CORRELATION = "correlation"
     EFFECT = "effect"
 
-    def __str__(self) -> str:
-        """Render as a string."""
-        return "-".join(part.capitalize() for part in self.name.split("_"))
+    @staticmethod
+    def _int_class() -> Enum:
+        return ScoreTypeInt
 
 
-class ScoreType(IntEnum):
+class ScoreTypeInt(_IntToStrMixin, IntEnum):
     """Integer based Enum for the different types of geneset scores."""
 
     P_VALUE = 1
@@ -35,9 +81,9 @@ class ScoreType(IntEnum):
     CORRELATION = 4
     EFFECT = 5
 
-    def __str__(self) -> str:
-        """Render as a string."""
-        return "-".join(part.capitalize() for part in self.name.split("_"))
+    @staticmethod
+    def _str_class() -> Enum:
+        return ScoreType
 
 
 class GenesetAccess(str, Enum):
@@ -47,14 +93,27 @@ class GenesetAccess(str, Enum):
     PUBLIC = "public"
 
 
-class AnnotationType(str, Enum):
+class Annotator(str, Enum):
     """Enum for the different types of annotations."""
 
     MONARCH = "monarch"
     NCBO = "ncbo"
 
 
-class AdminLevel(IntEnum):
+class AdminLevel(_StrToIntMixin, Enum):
+    """Enum for the different levels of admin access."""
+
+    NORMAL_USER = "Normal User"
+    CURATOR = "Curator"
+    ADMIN = "Admin"
+    ADMIN_WITH_DEBUG = "Admin with Debug"
+
+    @staticmethod
+    def _int_class() -> Enum:
+        return AdminLevelInt
+
+
+class AdminLevelInt(_IntToStrMixin, IntEnum):
     """Enum for the different levels of admin access."""
 
     NORMAL_USER = 0
@@ -62,8 +121,32 @@ class AdminLevel(IntEnum):
     ADMIN = 2
     ADMIN_WITH_DEBUG = 3
 
+    @staticmethod
+    def _str_class() -> Enum:
+        return AdminLevel
 
-class Species(IntEnum):
+
+class Species(_StrToIntMixin, Enum):
+    """Enumeration of Geneweaver Species."""
+
+    ALL = "All"
+    MUS_MUSCULUS = "Mus musculus"
+    HOMO_SAPIENS = "Homo Sapiens"
+    RATTUS_NORVEGICUS = "Rattus Norvegicus"
+    DANIO_RERIO = "Danio Rerio"
+    DROSOPHILA_MELANOGASTER = "Drosophila Melanogaster"
+    MACACA_MULATTA = "Macaca Mulatta"
+    CAENORHABDITIS_ELEGANS = "Caenorhabditis Elegans"
+    SACCHAROMYCES_CEREVISIAE = "Saccharomyces Cerevisiae"
+    GALLUS_GALLUS = "Gallus Gallus"
+    CANIS_FAMILIARIS = "Canis Familiaris"
+
+    @staticmethod
+    def _int_class() -> Enum:
+        return SpeciesInt
+
+
+class SpeciesInt(_IntToStrMixin, IntEnum):
     """Species enum to match Geneweaver database."""
 
     ALL = 0
@@ -78,12 +161,37 @@ class Species(IntEnum):
     GALLUS_GALLUS = 10
     CANIS_FAMILIARIS = 11
 
-    def __str__(self) -> str:
-        """Render as a string."""
-        return self.name.replace("_", " ").capitalize()
+    @staticmethod
+    def _str_class() -> Enum:
+        return Species
 
 
-class GeneIdentifier(IntEnum):
+class GeneIdentifier(_StrToIntMixin, Enum):
+    """Gene Identifier types to match Geneweaver database."""
+
+    ENTREZ = "Entrez"
+    ENSEMBLE_GENE = "Ensemble Gene"
+    ENSEMBLE_PROTEIN = "Ensemble Protein"
+    ENSEMBLE_TRANSCRIPT = "Ensemble Transcript"
+    UNIGENE = "Unigene"
+    GENE_SYMBOL = "Gene Symbol"
+    UNANNOTATED = "Unannotated"
+    MGI = "MGI"
+    HGNC = "HGNC"
+    RGD = "RGD"
+    ZFIN = "ZFIN"
+    FLYBASE = "FlyBase"
+    WORMBASE = "Wormbase"
+    SGD = "SGD"
+    MIRBASE = "miRBase"
+    CGNC = "CGNC"
+
+    @staticmethod
+    def _int_class() -> Enum:
+        return GeneIdentifierInt
+
+
+class GeneIdentifierInt(_IntToStrMixin, IntEnum):
     """Gene Identifier types to match Geneweaver database."""
 
     ENTREZ = 1
@@ -103,14 +211,72 @@ class GeneIdentifier(IntEnum):
     MIRBASE = 17
     CGNC = 20
 
+    @staticmethod
+    def _str_class() -> Enum:
+        return GeneIdentifier
+
+
+class Microarray(_StrToIntMixin, Enum):
+    """Microarray types (does not match geneweaver database)."""
+
+    AFFYMETRIX_C_ELEGANS_GENOME_ARRAY = "Affymetrix C. elegans Genome Array"
+    AFFYMETRIX_DROSOPHILA_GENOME_2_0 = "Affymetrix Drosophila Genome 2.0"
+    AFFYMETRIX_HT_HUMAN_GENOME_U133A = "Affymetrix HT Human Genome U133A"
+    AFFYMETRIX_HUMAN_35K_SET = "Affymetrix Human 35k Set"
+    AFFYMETRIX_HUMAN_35K_SUBA = "Affymetrix Human 35k SubA"
+    AFFYMETRIX_HUMAN_35K_SUBB = "Affymetrix Human 35k SubB"
+    AFFYMETRIX_HUMAN_35K_SUBC = "Affymetrix Human 35k SubC"
+    AFFYMETRIX_HUMAN_35K_SUBD = "Affymetrix Human 35k SubD"
+    AFFYMETRIX_HUMAN_GENOME_U133A = "Affymetrix Human Genome U133A"
+    AFFYMETRIX_HUMAN_GENOME_U133A_2_0 = "Affymetrix Human Genome U133A 2.0"
+    AFFYMETRIX_HUMAN_GENOME_U133B = "Affymetrix Human Genome U133B"
+    AFFYMETRIX_HUMAN_GENOME_U133_PLUS_2_0 = "Affymetrix Human Genome U133 Plus 2.0"
+    AFFYMETRIX_HUMAN_GENOME_U133_SET = "Affymetrix Human Genome U133 Set"
+    AFFYMETRIX_HUMAN_HG_FOCUS_TARGET = "Affymetrix Human HG-Focus Target"
+    AFFYMETRIX_MOUSE_EXON_1_0_ST = "Affymetrix Mouse Exon 1.0 ST"
+    AFFYMETRIX_MOUSE_EXPRESSION_430A = "Affymetrix Mouse Expression 430A"
+    AFFYMETRIX_MOUSE_EXPRESSION_430B = "Affymetrix Mouse Expression 430B"
+    AFFYMETRIX_MOUSE_EXPRESSION_430_SET = "Affymetrix Mouse Expression 430 Set"
+    AFFYMETRIX_MOUSE_GENE_1_0_ST_ARRAY = "Affymetrix Mouse Gene 1.0 ST Array"
+    AFFYMETRIX_MOUSE_GENOME_430_2_0 = "Affymetrix Mouse Genome 430 2.0"
+    AFFYMETRIX_MOUSE_GENOME_430A_2_0 = "Affymetrix Mouse Genome 430A 2.0"
+    AFFYMETRIX_MURINE_11K_SET = "Affymetrix Murine 11K Set"
+    AFFYMETRIX_MURINE_11K_SUBA = "Affymetrix Murine 11K SubA"
+    AFFYMETRIX_MURINE_11K_SUBB = "Affymetrix Murine 11K SubB"
+    AFFYMETRIX_MURINE_GENOME_U74A = "Affymetrix Murine Genome U74A"
+    AFFYMETRIX_MURINE_GENOME_U74B = "Affymetrix Murine Genome U74B"
+    AFFYMETRIX_MURINE_GENOME_U74C = "Affymetrix Murine Genome U74C"
+    AFFYMETRIX_MURINE_GENOME_U74_SET = "Affymetrix Murine Genome U74 Set"
+    AFFYMETRIX_MURINE_GENOME_U74_VERSION_2 = "Affymetrix Murine Genome U74 Version 2"
+    AFFYMETRIX_MURINE_GENOME_U74_VERSION_2_SET = (
+        "Affymetrix Murine Genome U74 Version 2 Set"
+    )
+    AFFYMETRIX_RAT_EXON_1_0_ST = "Affymetrix Rat Exon 1.0 ST"
+    AFFYMETRIX_RAT_EXPRESSION_230A = "ffymetrix Rat Expression 230A"
+    AFFYMETRIX_RAT_EXPRESSION_230B = "ffymetrix Rat Expression 230B"
+    AFFYMETRIX_RAT_EXPRESSION_230_SET = "Affymetrix Rat Expression 230 Set"
+    AFFYMETRIX_RAT_GENOME_230_2_0 = "Affymetrix Rat Genome 230 2.0"
+    AFFYMETRIX_RHESUS_MACAQUE_GENOME = "Affymetrix Rhesus Macaque Genome"
+    AFFYMETRIX_YEAST_GENOME_2_0_ARRAY = "Affymetrix Yeast Genome 2.0 Array"
+    AFFYMETRIX_YEAST_GENOME_S98_ARRAY = "Affymetrix Yeast Genome S98 Array"
+    AFFYMETRIX_ZEBRAFISH_GENOME = "Affymetrix Zebrafish Genome"
+    AGILENT_MOUSE_G4121A_TOXICOGENOMICS = "Agilent Mouse G4121A (Toxicogenomics)"
+    AGILENT_MOUSE_WHOLE_GENOME_G4122F = "Agilent Mouse Whole Genome G4122F"
+    ILLUMINA_HUMAN_6_V2_0 = "Illumina Human-6 v2.0"
+    ILLUMINA_MOUSEREF_8_V2_0 = "Illumina MouseRef-8 v2.0"
+    ILLUMINA_MOUSEWG_6_V1_1 = "Illumina MouseWG-6 v1.1"
+    ILLUMINA_MOUSEWG_6_V2_0 = "Illumina MouseWG-6 v2.0"
+
+    @staticmethod
+    def _int_class() -> Enum:
+        return MicroarrayInt
+
     def __str__(self) -> str:
         """Render as a string."""
-        if len(self.name) > 4:
-            return " ".join(part.capitalize() for part in self.name.split("_"))
-        return self.name
+        return f"microarray {self.value}"
 
 
-class Microarray(IntEnum):
+class MicroarrayInt(_IntToStrMixin, IntEnum):
     """Microarray types (does not match geneweaver database)."""
 
     AFFYMETRIX_C_ELEGANS_GENOME_ARRAY = 100
@@ -159,7 +325,6 @@ class Microarray(IntEnum):
     ILLUMINA_MOUSEWG_6_V1_1 = 143
     ILLUMINA_MOUSEWG_6_V2_0 = 144
 
-    def __str__(self) -> str:
-        """Render as a string."""
-        formatted = " ".join(part.capitalize() for part in self.name.split("_"))
-        return f"microarray {formatted}"
+    @staticmethod
+    def _str_class() -> Enum:
+        return Microarray
