@@ -5,6 +5,11 @@ from enum import Enum, IntEnum
 class _StrToIntMixin:
     """Mixin for string based enums that have an integer representation."""
 
+    @classmethod
+    def _missing_(cls, key) -> Enum:
+        """Return the key if it is not found."""
+        return cls[cls._int_class()(key).name]
+
     def __str__(self) -> str:
         """Render as a string."""
         return self.value
@@ -20,6 +25,11 @@ class _StrToIntMixin:
 
 class _IntToStrMixin:
     """Mixin for integer based enums that have a string representation."""
+
+    @classmethod
+    def _missing_(cls, key) -> Enum:
+        """Return the key if it is not found."""
+        return cls[cls._str_class()(key).name]
 
     def __str__(self) -> str:
         """Render as a string."""
