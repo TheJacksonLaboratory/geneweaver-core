@@ -1,12 +1,13 @@
 """Enum classes for the GeneWeaver project."""
 from enum import Enum, IntEnum
+from typing import Union
 
 
 class _StrToIntMixin:
     """Mixin for string based enums that have an integer representation."""
 
     @classmethod
-    def _missing_(cls, key) -> Enum:
+    def _missing_(cls: Enum, key: Union[str, int]) -> Enum:
         """Return the key if it is not found."""
         return cls[cls._int_class()(key).name]
 
@@ -27,7 +28,7 @@ class _IntToStrMixin:
     """Mixin for integer based enums that have a string representation."""
 
     @classmethod
-    def _missing_(cls, key) -> Enum:
+    def _missing_(cls: IntEnum, key: Union[str, int]) -> IntEnum:
         """Return the key if it is not found."""
         return cls[cls._str_class()(key).name]
 
