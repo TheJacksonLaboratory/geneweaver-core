@@ -9,7 +9,11 @@ class _StrToIntMixin:
     @classmethod
     def _missing_(cls: Enum, key: Union[str, int]) -> Enum:
         """Return the key if it is not found."""
-        return cls[cls._int_class()(key).name]
+        try:
+            key = int(key)
+            return cls._int_class()(key).as_str()
+        except ValueError:
+            pass
 
     def __str__(self) -> str:
         """Render as a string."""
@@ -30,7 +34,8 @@ class _IntToStrMixin:
     @classmethod
     def _missing_(cls: IntEnum, key: Union[str, int]) -> IntEnum:
         """Return the key if it is not found."""
-        return cls[cls._str_class()(key).name]
+        if isinstance(key, str):
+            return cls._str_class()(key).as_int()
 
     def __str__(self) -> str:
         """Render as a string."""
