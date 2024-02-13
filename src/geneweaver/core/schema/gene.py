@@ -1,6 +1,7 @@
 """Gene schema."""
 import datetime
 from typing import Any, List, Optional
+from geneweaver.core.enum import GeneIdentifier, Species
 
 from pydantic import BaseModel
 
@@ -10,10 +11,10 @@ class Gene(BaseModel):
 
     id: int  # noqa: A003
     reference_id: str
-    gene_database: str
-    species: str
+    gene_database: GeneIdentifier
+    species: Species
     preferred: bool
-    date: str
+    date: datetime.date
 
 
 class GeneRow(BaseModel):

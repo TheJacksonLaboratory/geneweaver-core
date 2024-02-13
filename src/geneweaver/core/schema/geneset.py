@@ -2,21 +2,27 @@
 import datetime
 from typing import List, Optional
 
-from geneweaver.core.enum import GenesetAccess, ScoreType
+from geneweaver.core.enum import GenesetAccess, ScoreType, GenesetTier, Species, GeneIdentifier
 from geneweaver.core.schema.gene import GeneValue
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class Geneset(BaseModel):
     """Geneset schema."""
 
+    id: int  # noqa: A003
+    user_id: int
+    file_id: int
+    tier: GenesetTier = Field(..., alias="curation_id")
+    species: Species = Field(..., alias="species_id")
     name: str
     abbreviation: str
+    publication_id: int
     description: str
     count: int
-    threshold_type: int
+    score_type: ScoreType
     threshold: str
-    gene_id_type: int
+    gene_id_type: GeneIdentifier
     created: datetime.date
     admin_flag: str
     updated: datetime.datetime
