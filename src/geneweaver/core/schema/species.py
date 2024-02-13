@@ -2,8 +2,8 @@
 import datetime
 from typing import Any, Optional
 
-from pydantic import BaseModel, Json
 from geneweaver.core.enum import GeneIdentifier
+from pydantic import BaseModel, Json
 
 
 class Species(BaseModel):

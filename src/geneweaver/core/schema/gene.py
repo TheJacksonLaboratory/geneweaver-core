@@ -1,8 +1,8 @@
 """Gene schema."""
 import datetime
 from typing import Any, List, Optional
-from geneweaver.core.enum import GeneIdentifier, Species
 
+from geneweaver.core.enum import GeneIdentifier, Species
 from pydantic import BaseModel
 
 

@@ -100,7 +100,6 @@ class GenesetStatus(Enum):
             pass
 
 
-
 class CurationAssignment(_StrToIntMixin, Enum):
     """Enum for the different types of curation assignments."""
 

@@ -2,7 +2,13 @@
 import datetime
 from typing import List, Optional
 
-from geneweaver.core.enum import GenesetAccess, ScoreType, GenesetTier, Species, GeneIdentifier
+from geneweaver.core.enum import (
+    GeneIdentifier,
+    GenesetAccess,
+    GenesetTier,
+    ScoreType,
+    Species,
+)
 from geneweaver.core.schema.gene import GeneValue
 from pydantic import BaseModel, Field
 
