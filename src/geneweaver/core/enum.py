@@ -46,6 +46,60 @@ class _IntToStrMixin:
         return self._str_class()[self.name]
 
 
+class GenesetTier(_StrToIntMixin, Enum):
+    """Enum for the different types of geneset tiers."""
+
+    TIER1 = "Tier I"
+    TIER2 = "Tier II"
+    TIER3 = "Tier III"
+    TIER4 = "Tier IV"
+    TIER5 = "Tier V"
+
+    @staticmethod
+    def _int_class() -> Enum:
+        return GenesetTierInt
+
+
+class GenesetTierInt(_IntToStrMixin, IntEnum):
+    """Enum for the different types of geneset tiers."""
+
+    TIER1 = 1
+    TIER2 = 2
+    TIER3 = 3
+    TIER4 = 4
+    TIER5 = 5
+
+    @staticmethod
+    def _str_class() -> Enum:
+        return GenesetTier
+
+
+class GenesetStatus(Enum):
+    """Enum for the different types of geneset statuses."""
+
+    NORMAL = "normal"
+    DELETED = "deleted"
+    PROVISIONAL = "provisional"
+    DELAYED = "delayed"
+    DELATED_PROCESSING = "delayed:processing"
+    DEPRECATED = "deprecated"
+
+    @classmethod
+    def _missing_(cls: Enum, key: Union[str, int]) -> Enum:
+        """Return the key if it is not found."""
+        try:
+            key = str(key).lower()
+            for member in cls:
+                if member.value == key:
+                    return member
+            split_key = key.split(":")[0]
+            for member in cls:
+                if member.value == split_key:
+                    return member
+        except ValueError:
+            pass
+
+
 class CurationAssignment(_StrToIntMixin, Enum):
     """Enum for the different types of curation assignments."""
 

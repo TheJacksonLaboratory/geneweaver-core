@@ -28,13 +28,19 @@ def gene_value_data() -> dict:
 def geneset_data() -> dict:
     """Provide example geneset data."""
     return {
+        "id": 1,
+        "user_id": 1,
+        "file_id": 1,
         "name": "name",
         "abbreviation": "abbreviation",
         "description": "description",
         "count": 1,
-        "threshold_type": 1,
+        "score_type": 1,
         "threshold": "1",
         "gene_id_type": 1,
+        "curation_id": 1,
+        "species_id": 1,
+        "publication_id": 1,
         "created": "2019-01-01",
         "admin_flag": "admin_flag",
         "updated": str(datetime.now()),

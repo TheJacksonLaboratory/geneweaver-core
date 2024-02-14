@@ -37,9 +37,9 @@ def test_geneset_schema(geneset_data: dict) -> None:
     assert geneset.abbreviation == geneset_data["abbreviation"]
     assert geneset.description == geneset_data["description"]
     assert geneset.count == geneset_data["count"]
-    assert geneset.threshold_type == geneset_data["threshold_type"]
+    assert int(geneset.score_type) == geneset_data["score_type"]
     assert geneset.threshold == geneset_data["threshold"]
-    assert geneset.gene_id_type == geneset_data["gene_id_type"]
+    assert int(geneset.gene_id_type) == geneset_data["gene_id_type"]
     assert str(geneset.created) == str(geneset_data["created"])
     assert geneset.admin_flag == geneset_data["admin_flag"]
     assert str(geneset.updated) == str(geneset_data["updated"])
