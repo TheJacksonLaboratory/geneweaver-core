@@ -1,4 +1,5 @@
 """Enum classes for the GeneWeaver project."""
+
 from enum import Enum, IntEnum
 from typing import Union
 

@@ -1,4 +1,5 @@
 """Models needed to work with the legacy API."""
+
 from typing import List, Optional
 
 from geneweaver.core.enum import GenesetAccess, ScoreType

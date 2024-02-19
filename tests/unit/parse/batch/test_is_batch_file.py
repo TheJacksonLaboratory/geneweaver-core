@@ -1,4 +1,5 @@
 """Test the is_batch_file function in geneweaver.core.parse.batch."""
+
 # ruff: noqa: ANN001, ANN201
 from unittest.mock import patch
 

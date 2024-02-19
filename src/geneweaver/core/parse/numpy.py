@@ -8,6 +8,7 @@ The top level functions are (in-order):
 If you know that your numpy array has the gene symbol in the first column and the
 gene value in the second column, you can use ndarray_to_gene_values_by_idx.
 """
+
 from typing import List, Tuple
 
 import numpy as np

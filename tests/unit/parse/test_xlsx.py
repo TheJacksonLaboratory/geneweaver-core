@@ -1,4 +1,5 @@
 """Tests for the XLSX parser module."""
+
 # ruff: noqa: B905, ANN001, ANN201
 from unittest.mock import patch
 

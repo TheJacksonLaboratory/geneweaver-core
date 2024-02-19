@@ -1,4 +1,5 @@
 """Test the check_threshold function for various score types."""
+
 from unittest.mock import patch
 
 import pytest

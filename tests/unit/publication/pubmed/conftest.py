@@ -1,4 +1,5 @@
 """Fixtures for the pubmed api services."""
+
 from xml.etree import ElementTree
 
 import pytest

@@ -1,4 +1,5 @@
 """Constants for tests of the parse.numpy module."""
+
 import numpy as np
 
 valid_geneset_array = np.array([("GeneA", 1.2), ("GeneB", 2.5)])

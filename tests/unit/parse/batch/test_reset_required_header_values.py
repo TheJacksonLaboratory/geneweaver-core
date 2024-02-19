@@ -1,4 +1,5 @@
 """Tests for the reset_required_header_values function."""
+
 # ruff: noqa: ANN001, ANN201
 import pytest
 from geneweaver.core.parse.batch import (

@@ -1,4 +1,5 @@
 """User related schemas."""
+
 import datetime
 from typing import List, Optional
 

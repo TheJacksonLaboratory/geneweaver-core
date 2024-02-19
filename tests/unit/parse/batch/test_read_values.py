@@ -1,4 +1,5 @@
 """Tests for the parse_qvalue function."""
+
 # ruff: noqa: ANN001, ANN201, ANN101
 from unittest.mock import patch
 

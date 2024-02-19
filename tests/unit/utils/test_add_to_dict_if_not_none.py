@@ -1,4 +1,5 @@
 """Test the add_to_dict_if_not_none function."""
+
 import pytest
 from geneweaver.core.utils import add_to_dict_if_not_none
 

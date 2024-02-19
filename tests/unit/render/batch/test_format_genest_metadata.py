@@ -1,4 +1,5 @@
 """Test the format_geneset_metadata function."""
+
 from geneweaver.core.render.batch import format_geneset_metadata
 
 

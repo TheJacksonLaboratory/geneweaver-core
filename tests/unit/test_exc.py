@@ -1,4 +1,5 @@
 """Test the Geneweaver exception module."""
+
 import pytest
 from geneweaver.core.exc import GeneweaverError
 

@@ -1,4 +1,5 @@
 """Fixture for the parse module."""
+
 # ruff: noqa: ANN001, B905
 from pathlib import Path
 from typing import List, Tuple

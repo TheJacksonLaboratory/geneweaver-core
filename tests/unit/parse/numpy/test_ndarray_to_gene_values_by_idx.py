@@ -1,4 +1,5 @@
 """Test the ndarray_to_gene_values_by_idx function."""
+
 from typing import List
 
 import numpy as np

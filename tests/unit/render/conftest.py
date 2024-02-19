@@ -1,4 +1,5 @@
 """Fixtures for the render module unit tests."""
+
 import random
 import string
 from typing import List, Union

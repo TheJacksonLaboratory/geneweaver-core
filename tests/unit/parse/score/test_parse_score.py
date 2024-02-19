@@ -1,4 +1,5 @@
 """Test the parse_score function."""
+
 # ruff: noqa: ANN001, ANN201
 from unittest.mock import Mock, patch
 

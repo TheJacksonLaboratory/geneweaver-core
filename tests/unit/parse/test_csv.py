@@ -1,4 +1,5 @@
 """Tests for the CSV parser module."""
+
 # ruff: noqa: B905, ANN001, ANN201
 import tempfile
 from pathlib import Path

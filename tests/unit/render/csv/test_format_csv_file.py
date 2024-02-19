@@ -1,4 +1,5 @@
 """Test the format_csv_file function."""
+
 from unittest.mock import MagicMock, patch
 
 from geneweaver.core.render.csv import format_csv_file

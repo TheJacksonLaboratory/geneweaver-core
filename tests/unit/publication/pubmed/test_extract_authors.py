@@ -1,4 +1,5 @@
 """Tests the extract_authors function."""
+
 from unittest import mock
 from xml.etree import ElementTree
 

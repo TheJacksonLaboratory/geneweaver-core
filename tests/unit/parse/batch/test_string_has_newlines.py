@@ -1,4 +1,5 @@
 """Tests for the string_has_newlines function."""
+
 # ruff: noqa: ANN001, ANN201
 import pytest
 from geneweaver.core.parse.batch import string_has_newlines
@@ -41,7 +42,6 @@ from geneweaver.core.parse.batch import string_has_newlines
         ("Hello\t\r\n world!", True),
         # test string with tabs and carriage returns and newlines and spaces
         ("Hello\t\t \r\n world!", True),
-        ("Hello\t\r\n world!", True),
     ],
 )
 def test_string_has_newlines(input_str, expected):

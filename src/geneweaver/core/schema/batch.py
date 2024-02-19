@@ -1,4 +1,5 @@
 """Module for defining schemas for batch endpoints."""
+
 # ruff: noqa: N805, ANN001, ANN101
 from typing import List, Optional, Union
 

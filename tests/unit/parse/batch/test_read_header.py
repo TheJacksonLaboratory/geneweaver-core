@@ -1,4 +1,5 @@
 """Tests for the read_header function."""
+
 # ruff: noqa: ANN001, ANN201
 from unittest.mock import patch
 

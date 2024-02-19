@@ -20,6 +20,7 @@ XML Utility Functions:
     format_author_node: Format an author node from PubMed XML
     authors_are_complete: Check if authors are complete according PubMed XML
 """
+
 from xml.etree import ElementTree
 
 import requests

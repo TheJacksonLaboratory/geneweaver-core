@@ -1,4 +1,5 @@
 """Stub generator schemas."""
+
 from pydantic import BaseModel
 
 

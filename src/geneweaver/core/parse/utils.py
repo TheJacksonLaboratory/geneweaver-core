@@ -1,4 +1,5 @@
 """Utility functions for the parser module."""
+
 from pathlib import Path
 from typing import Dict, List
 

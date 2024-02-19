@@ -1,4 +1,5 @@
 """Test that the Eutils API rate limits don't break our usage."""
+
 import pytest
 import requests
 from geneweaver.core.publication.pubmed import PUBMED_SVC_URL, get_xml_for_pubmed_id

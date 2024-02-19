@@ -1,4 +1,5 @@
 """Test the two_sided_threshold function."""
+
 # ruff: noqa: D103
 import pytest
 from geneweaver.core.parse.threshold import two_sided_threshold
@@ -19,7 +20,6 @@ from geneweaver.core.parse.threshold import two_sided_threshold
         (-0.1, -0.05, 0.15, False),
         (-0.1, 0.15, -0.05, False),
         # Test case with one negative value and reversed bounds
-        (-0.1, 0.15, -0.05, False),
         (0.1, -0.05, 0.15, True),
         # Test case with one bound greater than 1.0
         (0.1, 0.05, 1.15, True),

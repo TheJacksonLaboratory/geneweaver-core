@@ -1,4 +1,5 @@
 """Test extract_top_level_fields function."""
+
 from xml.etree import ElementTree
 
 import pytest

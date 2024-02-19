@@ -1,4 +1,5 @@
 """Test that we can import schema definitions."""
+
 import importlib
 
 import pytest

@@ -1,4 +1,5 @@
 """Test the gene_list_str function."""
+
 from typing import List
 
 import pytest

@@ -1,4 +1,5 @@
 """Test the ndarray_has_gene_labels function."""
+
 import numpy as np
 import pytest
 from geneweaver.core.parse.numpy import ndarray_has_gene_labels

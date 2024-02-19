@@ -1,4 +1,5 @@
 """Test the extract date function."""
+
 from xml.etree import ElementTree
 
 import pytest

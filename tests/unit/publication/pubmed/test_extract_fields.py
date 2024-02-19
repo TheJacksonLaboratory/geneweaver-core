@@ -1,4 +1,5 @@
 """Test the extract_fields function."""
+
 from unittest.mock import patch
 from xml.etree import ElementTree
 
@@ -52,6 +53,6 @@ def test_extract_fields_pubmed(pubmed_xml):
     """Test extract_fields function without patching and with PubMed-like XML."""
     result = extract_fields(pubmed_xml)
     assert result is not None
-    assert type(result) == dict
+    assert isinstance(result, dict)
     for item in ["title", "abstract", "journal", "volume", "pages"]:
         assert item in result.keys()

@@ -1,4 +1,5 @@
 """Tests for the process_lines function."""
+
 # ruff: noqa: ANN001, ANN201
 from unittest.mock import patch
 

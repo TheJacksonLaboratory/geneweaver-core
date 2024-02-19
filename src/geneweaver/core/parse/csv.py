@@ -1,4 +1,5 @@
 """Utility functions to parse CSV documents."""
+
 import csv
 import itertools
 from typing import Dict, List, TextIO, Tuple, Union

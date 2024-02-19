@@ -1,4 +1,5 @@
 """Functions for rendering gene lists to strings."""
+
 from typing import Iterable
 
 from geneweaver.core.schema.gene import GeneValue

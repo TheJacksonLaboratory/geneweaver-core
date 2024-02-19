@@ -1,6 +1,5 @@
 """Constants for use with the integration tests."""
 
-
 # Yes, these are all Geneweaver related publications :)
 PUBMED_IDS = [
     "26656951",

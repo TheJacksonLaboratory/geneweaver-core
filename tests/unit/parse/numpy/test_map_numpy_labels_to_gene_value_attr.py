@@ -1,4 +1,5 @@
 """Test the map_ndarray_labels_to_gene_value_attr function."""
+
 from typing import Tuple
 
 import numpy as np
