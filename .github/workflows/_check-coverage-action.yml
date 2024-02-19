@@ -64,10 +64,7 @@ jobs:
         with:
           name: coverage-report-html
           path: htmlcov
-      - name: Upload coverage to Compas
-        with:
-          name: coverage-report
-          path: coverage_report.txt
+      - name: Upload coverage to Compass
         run: |
           METRIC_VALUE=$(cat coverage_report.txt | grep 'Total coverage:' | awk '{print $NF}' | sed 's/%//')
           curl --request POST \
