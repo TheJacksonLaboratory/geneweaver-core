@@ -86,7 +86,7 @@ jobs:
           --header "Accept: application/json" \
           --header "Content-Type: application/json" \
           --data "{
-            \"metricSourceId\": \"ari:cloud:compass:44257862-6c68-4d47-8211-da38d2bb001b:metric-source/90bb0329-f6c5-429a-abbc-8d174535ad21/bb8e9f1a-718e-4cd9-a4b5-9da8f3df71c0\",
+            \"metricSourceId\": \"ari:cloud:compass:44257862-6c68-4d47-8211-da38d2bb001b:metric-source/90bb0329-f6c5-429a-abbc-8d174535ad21/d02a3e8f-eab3-4473-8f39-69818db8f7b1\",
             \"value\": $METRIC_VALUE,
             \"timestamp\": \"$(date -u +'%Y-%m-%dT%H:%M:%SZ')\"
           }"
