@@ -1,4 +1,5 @@
 """Tests for the check_has_required_header_values function."""
+
 # ruff: noqa: ANN001, ANN201
 from unittest.mock import patch
 

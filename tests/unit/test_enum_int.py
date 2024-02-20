@@ -1,4 +1,5 @@
 """Test the enum module."""
+
 from enum import Enum, IntEnum
 
 import pytest

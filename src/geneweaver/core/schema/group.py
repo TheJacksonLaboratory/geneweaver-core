@@ -1,4 +1,5 @@
 """Group schemas."""
+
 import datetime
 from typing import List
 

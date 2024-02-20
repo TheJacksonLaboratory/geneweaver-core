@@ -1,4 +1,5 @@
 """Test that we can create all of the schema objects from a dict."""
+
 import pytest
 from geneweaver.core.schema.gene import Gene, GeneValue
 from geneweaver.core.schema.geneset import BatchUpload, Geneset, GenesetUpload

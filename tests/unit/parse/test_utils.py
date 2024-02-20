@@ -1,4 +1,5 @@
 """Tests for the parser utility functions."""
+
 # ruff: noqa: ANN001, ANN201
 import pytest
 from geneweaver.core.parse.utils import get_file_type, replace_keys

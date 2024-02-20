@@ -1,4 +1,5 @@
 """Utility functions for tests."""
+
 from typing import Any
 
 

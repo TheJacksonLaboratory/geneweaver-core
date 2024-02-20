@@ -1,4 +1,5 @@
 """Test the format_csv_metadata function."""
+
 import pytest
 from geneweaver.core.render.csv import format_csv_metadata
 

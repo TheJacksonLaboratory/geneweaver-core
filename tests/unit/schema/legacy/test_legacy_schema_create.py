@@ -1,4 +1,5 @@
 """Test the legacy schema create classes."""
+
 from geneweaver.core.schema.legacy_api import (
     AddGenesetByUser,
     AddGenesetByUserBase,

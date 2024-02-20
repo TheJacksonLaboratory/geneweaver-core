@@ -1,4 +1,5 @@
 """Schemas relating to species."""
+
 import datetime
 from typing import Any, Optional
 

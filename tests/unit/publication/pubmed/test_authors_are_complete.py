@@ -1,4 +1,5 @@
 """Test the `authors_are_complete` function."""
+
 from xml.etree import ElementTree
 
 import pytest

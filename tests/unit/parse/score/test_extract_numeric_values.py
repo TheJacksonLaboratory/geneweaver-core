@@ -1,4 +1,5 @@
 """Test the extract numeric values function."""
+
 # ruff: noqa: ANN001, ANN201
 import pytest
 from geneweaver.core.parse.score import extract_numeric_values

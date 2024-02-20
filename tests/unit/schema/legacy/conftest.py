@@ -1,4 +1,5 @@
 """Fixtures for legacy schema tests."""
+
 import pytest
 
 

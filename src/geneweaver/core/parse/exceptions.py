@@ -14,6 +14,7 @@ class EmptyFileError(UnsupportedFileTypeError):
     ----------
         file_path -- the path of the file that is empty
         message -- explanation of the error
+
     """
 
     def __init__(

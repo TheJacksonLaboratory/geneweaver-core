@@ -1,4 +1,5 @@
 """Test that Enum and IntEnum has valid mappings between them."""
+
 import pytest
 from geneweaver.core.enum import (
     AdminLevel,

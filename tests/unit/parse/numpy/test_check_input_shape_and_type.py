@@ -1,4 +1,5 @@
 """Test the check_input_shape_and_type function."""
+
 import numpy as np
 import pytest
 from geneweaver.core.parse.numpy import check_input_shape_and_type

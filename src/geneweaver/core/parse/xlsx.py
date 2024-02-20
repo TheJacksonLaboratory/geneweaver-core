@@ -1,4 +1,5 @@
 """Parse Excel files for use by the client library."""
+
 from pathlib import Path
 from typing import Callable, Dict, List, Optional, Tuple, Union
 from zipfile import BadZipFile

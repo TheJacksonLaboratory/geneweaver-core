@@ -1,4 +1,5 @@
 """Utilities for integration tests."""
+
 import time
 from typing import Callable, Optional, Sequence
 

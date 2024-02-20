@@ -1,4 +1,5 @@
 """Tests for the extract_one_or_two_numeric_values function."""
+
 # ruff: noqa: ANN001, ANN201
 import pytest
 from geneweaver.core.parse.score import (

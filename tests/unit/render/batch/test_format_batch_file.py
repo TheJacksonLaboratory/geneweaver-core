@@ -1,4 +1,5 @@
 """Test the format_batch_file function."""
+
 from unittest.mock import patch
 
 from geneweaver.core.render.batch import format_batch_file

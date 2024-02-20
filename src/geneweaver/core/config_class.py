@@ -3,6 +3,7 @@
 For more options refer to pydantic base-settings docs:
 https://pydantic-docs.helpmanual.io/usage/settings/
 """
+
 from pydantic import BaseSettings
 
 

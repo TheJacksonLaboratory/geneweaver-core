@@ -1,4 +1,5 @@
 """Test the format_author_node function."""
+
 from xml.etree import ElementTree
 
 import pytest

@@ -1,4 +1,5 @@
 """Gene schema."""
+
 import datetime
 from typing import Any, List, Optional
 

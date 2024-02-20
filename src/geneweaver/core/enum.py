@@ -1,4 +1,5 @@
 """Enum classes for the GeneWeaver project."""
+
 from enum import Enum, IntEnum
 from typing import Union
 
@@ -200,7 +201,7 @@ class Species(_StrToIntMixin, Enum):
     """Enumeration of Geneweaver Species."""
 
     ALL = "All"
-    MUS_MUSCULUS = "Mus musculus"
+    MUS_MUSCULUS = "Mus Musculus"
     HOMO_SAPIENS = "Homo Sapiens"
     RATTUS_NORVEGICUS = "Rattus Norvegicus"
     DANIO_RERIO = "Danio Rerio"

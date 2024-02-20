@@ -1,4 +1,5 @@
 """Schema module for GeneWeaver."""
+
 # ruff: noqa: F401
 from .gene import Gene, GeneValue
 from .geneset import Geneset, GenesetGenes, GenesetUpload

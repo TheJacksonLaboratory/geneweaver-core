@@ -73,6 +73,7 @@ HEADER_CHARACTERS = {
     "!": "score",
     "%": "gene_id_type",
     "~": "ontology",
+    "|": "uberon_id",
 }
 
 # Header characters which DO need to be space separated. This is because these

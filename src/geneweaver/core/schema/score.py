@@ -1,4 +1,5 @@
 """Pydantic schema for defining score types."""
+
 from typing import Optional
 
 from geneweaver.core.enum import ScoreType

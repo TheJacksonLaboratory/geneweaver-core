@@ -1,4 +1,5 @@
 """Test the get_publication function."""
+
 from unittest.mock import patch
 from xml.etree import ElementTree
 

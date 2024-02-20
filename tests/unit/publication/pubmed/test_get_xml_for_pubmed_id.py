@@ -1,4 +1,5 @@
 """Test the get_xml_for_pubmed_id function."""
+
 from unittest.mock import Mock, patch
 from xml.etree import ElementTree
 

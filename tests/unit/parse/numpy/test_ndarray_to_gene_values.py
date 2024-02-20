@@ -1,4 +1,5 @@
 """Test the ndarray_to_gene_values function."""
+
 from typing import List
 
 import numpy as np

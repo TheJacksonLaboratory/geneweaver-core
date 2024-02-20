@@ -1,4 +1,5 @@
 """Unit test fixtures for the schema module."""
+
 from datetime import datetime
 
 import pytest
