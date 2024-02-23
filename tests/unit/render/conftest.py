@@ -128,6 +128,7 @@ def mock_batch_upload_geneset_all_combinations(
         score=geneset_score_type,
         species=species,
         gene_id_type=any_gene_identifier,
+        private=True,
         abbreviation="MOCK",
         name="Mock Geneset",
         description="Mock geneset for testing.",

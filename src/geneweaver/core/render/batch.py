@@ -38,7 +38,7 @@ def format_geneset_metadata(geneset: BatchUploadGeneset) -> str:
         (
             f"{INV_CHAR_MAP[key] if key in INV_CHAR_MAP else key} {str(value)}"
             for key, value in geneset
-            if key != "values"
+            if key != "values" and value is not None
         )
     )
     data_str += "\n\n"
