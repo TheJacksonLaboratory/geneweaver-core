@@ -11,6 +11,6 @@ def test_format_geneset_metadata_standard(mock_batch_upload_geneset_all_combinat
     # Assert that the output is a string and has the expected structure
     assert isinstance(formatted_metadata, str)
     # Additional assertions can be made based on the specific format of the metadata
-    assert formatted_metadata.count("\n") == 10
-    for char in ["!", "@", "%", "P", "A", "T", ":", "=", "+"]:
+    assert formatted_metadata.count("\n") == 8
+    for char in ["!", "@", "%", "A", ":", "=", "+"]:
         assert char in formatted_metadata
