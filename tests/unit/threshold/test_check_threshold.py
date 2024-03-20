@@ -1,8 +1,8 @@
 """Test the check_threshold function."""
 
 import pytest
-from geneweaver.core.threshold import check_threshold
 from geneweaver.core.schema.score import GenesetScoreType
+from geneweaver.core.threshold import check_threshold
 
 
 @pytest.mark.parametrize(
@@ -31,4 +31,5 @@ from geneweaver.core.schema.score import GenesetScoreType
     ],
 )
 def test_check_threshold(geneset_score, value, expected):
+    """Check each parametrized case with valid arguments."""
     assert check_threshold(geneset_score, value) == expected

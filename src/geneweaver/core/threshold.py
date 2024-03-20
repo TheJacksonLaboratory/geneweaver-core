@@ -1,6 +1,7 @@
 """A module for functions dealing with thresholding."""
 
 from typing import List
+
 from geneweaver.core.schema.score import GenesetScoreType
 
 
