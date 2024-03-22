@@ -43,7 +43,7 @@ def get_publication(pubmed_id: str) -> PublicationInfo:
 
     publication_fields = extract_fields(publication_xml)
 
-    publication_fields['pubmed_id'] = pubmed_id
+    publication_fields["pubmed_id"] = pubmed_id
 
     return PublicationInfo(**publication_fields)
 
