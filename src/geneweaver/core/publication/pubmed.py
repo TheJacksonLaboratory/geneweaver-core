@@ -43,6 +43,8 @@ def get_publication(pubmed_id: str) -> PublicationInfo:
 
     publication_fields = extract_fields(publication_xml)
 
+    publication_fields['pubmed_id'] = pubmed_id
+
     return PublicationInfo(**publication_fields)
 
 
@@ -172,6 +174,8 @@ def extract_authors(publication_xml: ElementTree.XML) -> dict:
 
         if not authors_are_complete(author_list_node):
             authors.append("et al.")
+
+        authors = ", ".join(authors)
 
         add_to_dict_if_not_none(publication_authors, "authors", authors)
 
