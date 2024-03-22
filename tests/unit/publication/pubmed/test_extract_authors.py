@@ -16,13 +16,13 @@ EXAMPLE_XML_AUTHORS = [
         "<root><AuthorList CompleteYN='Y'><Author>"
         "<ForeName>John</ForeName><LastName>Doe</LastName>"
         "</Author></AuthorList></root>",
-        {"authors": ["John Doe"]},
+        {"authors": "John Doe"},
     ),
     (
         "<root><AuthorList CompleteYN='N'><Author>"
         "<ForeName>John</ForeName><LastName>Doe</LastName>"
         "</Author></AuthorList></root>",
-        {"authors": ["John Doe", "et al."]},
+        {"authors": "John Doe, et al."},
     ),
     ("<root></root>", {}),
     (
@@ -31,7 +31,7 @@ EXAMPLE_XML_AUTHORS = [
         "</Author><Author>"
         "<ForeName>Jane</ForeName><LastName>Doe</LastName>"
         "</Author></AuthorList></root>",
-        {"authors": ["John Doe", "Jane Doe"]},
+        {"authors": "John Doe, Jane Doe"},
     ),
 ]
 
