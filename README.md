@@ -1,8 +1,15 @@
 # Geneweaver Core
 
-[![Tests](https://github.com/TheJacksonLaboratory/geneweaver-core/actions/workflows/tests.yml/badge.svg?event=push)](https://github.com/TheJacksonLaboratory/geneweaver-core/actions/workflows/tests.yml)
-[![Style](https://github.com/TheJacksonLaboratory/geneweaver-core/actions/workflows/style.yml/badge.svg?event=push)](https://github.com/TheJacksonLaboratory/geneweaver-core/actions/workflows/style.yml)
-[![Coverage](https://github.com/TheJacksonLaboratory/geneweaver-core/actions/workflows/coverage.yml/badge.svg?event=push)](https://github.com/TheJacksonLaboratory/geneweaver-core/actions/workflows/coverage.yml)
+
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/TheJacksonLaboratory/geneweaver-core/tests.yml?branch=main&style=for-the-badge&logo=github&label=Tests)](https://github.com/TheJacksonLaboratory/geneweaver-core/actions/workflows/tests.yml?query=branch%3Amain++)
+[![Style](https://img.shields.io/github/actions/workflow/status/TheJacksonLaboratory/geneweaver-core/style.yml?branch=main&style=for-the-badge&logo=github&label=Style)](https://github.com/TheJacksonLaboratory/geneweaver-core/actions/workflows/style.yml?query=branch%3Amain++)
+[![Coverage](https://img.shields.io/github/actions/workflow/status/TheJacksonLaboratory/geneweaver-core/coverage.yml?branch=main&style=for-the-badge&logo=github&label=Coverage)](https://github.com/TheJacksonLaboratory/geneweaver-core/actions/workflows/coverage.yml?query=branch%3Amain++)
+
+![PyPI - License](https://img.shields.io/pypi/l/geneweaver-core?style=for-the-badge)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/geneweaver-core?style=for-the-badge)
+[![PyPI - Version](https://img.shields.io/pypi/v/geneweaver-core?style=for-the-badge&logo=pypi&logoColor=%23fff)](https://pypi.org/project/geneweaver-core/)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/geneweaver-core?style=for-the-badge)](https://pypi.org/project/geneweaver-core/)
+
 
 The Geneweaver Core Python library provides shared foundational functionality for the Geneweaver project. 
 It is a dependency of all other Geneweaver Python libraries, and is not intended to be used directly.
