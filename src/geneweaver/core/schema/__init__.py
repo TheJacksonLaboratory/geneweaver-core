@@ -1,7 +1,7 @@
 """Schema module for GeneWeaver."""
 
 # ruff: noqa: F401
-from .api_response import CollectionResponse, Links, Paging
+from .api_response import CollectionResponse, PagingLinks, Paging
 from .gene import Gene, GeneValue
 from .geneset import Geneset, GenesetGenes, GenesetUpload
 from .group import Group, UserAdminGroup
