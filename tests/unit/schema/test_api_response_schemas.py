@@ -43,7 +43,7 @@ def test_paging_links():
 )
 def test_paging_links_error(paging_links_kwargs):
     """Test the PagingLinks schema in error cases."""
-    with pytest.raises(ValueError, match="not an allowed value"):
+    with pytest.raises(ValueError, match="validation error"):
         PagingLinks(**paging_links_kwargs)
 
 
@@ -89,7 +89,7 @@ def test_paging():
 )
 def test_paging_errors(paging_kwargs):
     """Test the Paging schema in error cases."""
-    with pytest.raises(ValueError, match="not an allowed value"):
+    with pytest.raises(ValueError, match="validation error"):
         Paging(**paging_kwargs)
 
 
@@ -142,5 +142,5 @@ def test_inherit_from_collection_response(data_class):
 
 def test_collection_response_error():
     """Test the CollectionResponse class in error cases."""
-    with pytest.raises(ValueError, match="not an allowed value"):
+    with pytest.raises(ValueError, match="validation error"):
         CollectionResponse(data="not a list")
