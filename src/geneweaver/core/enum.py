@@ -130,11 +130,14 @@ class CurationAssignmentInt(_IntToStrMixin, IntEnum):
 
 
 class Sex(Enum):
+    """The Sex of an Animal."""
+
     FEMALE = "Female"
     MALE = "Male"
     BOTH = "Both"
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """Render as a string."""
         return self.value
 
 

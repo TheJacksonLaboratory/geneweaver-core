@@ -1,3 +1,5 @@
+"""Schemas for API Responses."""
+
 from typing import List, Optional
 
 from pydantic import AnyUrl, BaseModel
