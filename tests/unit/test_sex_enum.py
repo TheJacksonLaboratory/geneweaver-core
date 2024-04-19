@@ -6,7 +6,6 @@ from geneweaver.core.enum import Sex
 
 def test_sex_enum_as_string():
     """Test that the Sex enum renders to string as expected."""
-
     assert str(Sex.FEMALE) == "Female"
     assert str(Sex.MALE) == "Male"
     assert str(Sex.BOTH) == "Both"
@@ -14,7 +13,6 @@ def test_sex_enum_as_string():
 
 def test_initialize_sex_enum_from_string():
     """Test that we can initialize the Sex enum as expected."""
-
     assert Sex("Female") == Sex.FEMALE
     assert Sex("Male") == Sex.MALE
     assert Sex("Both") == Sex.BOTH
@@ -46,10 +44,6 @@ def test_initialize_sex_enum_from_string():
 )
 def test_sex_enum_raises_error_when_initialized_with_invalid_value(invalid_sex_value):
     """Test that initializing the Sex enum with an invalid value raises an error."""
-
-    with pytest.raises(ValueError) as error_info:
+    match_text = f"'{invalid_sex_value}' is not a valid Sex"
+    with pytest.raises(ValueError, match=match_text):
         Sex(invalid_sex_value)
-
-    assert (
-        str(error_info.value) == f"'{invalid_sex_value}' is not a valid Sex"
-    )
