@@ -19,3 +19,10 @@ class GenesetScoreType(BaseModel):
         if self.threshold_low:
             return f"{self.threshold_low} < {name} < {self.threshold}"
         return f"{name} < {self.threshold}"
+
+    def threshold_as_db_string(self) -> str:
+        """Return a string representation of the score type for the database."""
+        if self.threshold_low is not None:
+            return f"{self.threshold_low},{self.threshold}"
+        else:
+            return str(self.threshold)

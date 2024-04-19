@@ -129,6 +129,18 @@ class CurationAssignmentInt(_IntToStrMixin, IntEnum):
         return CurationAssignment
 
 
+class Sex(Enum):
+    """The Sex of an Animal."""
+
+    FEMALE = "Female"
+    MALE = "Male"
+    BOTH = "Both"
+
+    def __str__(self) -> str:
+        """Render as a string."""
+        return self.value
+
+
 class ScoreType(_StrToIntMixin, Enum):
     """Enum for the different types of geneset scores."""
 
