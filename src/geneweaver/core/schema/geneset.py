@@ -1,10 +1,12 @@
 """Schemas for geneset."""
 
 import datetime
-from typing import List, Optional
+from typing import List, Optional, Union
 
+from geneweaver.core.schema.score import GenesetScoreType
 from geneweaver.core.enum import (
     GeneIdentifier,
+    Microarray,
     GenesetAccess,
     GenesetTier,
     ScoreType,
@@ -48,16 +50,16 @@ class GenesetGenes(BaseModel):
 class GenesetUpload(BaseModel):
     """Geneset upload schema."""
 
+    score: GenesetScoreType
+    species: Species
+    gene_id_type: Union[GeneIdentifier, Microarray]
+    pubmed_id: Optional[str] = None
+    private: bool = True
+    curation_id: Optional[int] = None
+    abbreviation: str
     name: str
-    label: str
-    score_type: ScoreType
-    description: str
-    pubmed_id: Optional[str]
-    access: GenesetAccess
-    groups: List[str] = []
-    species: str
-    gene_identifier: str
-    gene_list: List[GeneValue]
+    description: str = ""
+    values: List[GeneValue]
 
 
 class BatchUpload(BaseModel):
