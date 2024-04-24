@@ -57,15 +57,14 @@ def geneset_upload_data() -> dict:
     """Provide example geneset upload data."""
     return {
         "name": "name",
-        "label": "label",
-        "score_type": "p-value",
+        "abbreviation": "label",
+        "score": {"score_type": "p-value", "threshold": 0.05},
         "description": "description",
         "pubmed_id": "1",
-        "access": "private",
-        "groups": ["group"],
-        "species": "species",
-        "gene_identifier": "gene_identifier",
-        "gene_list": [{"symbol": "1", "value": "1"}],
+        "private": True,
+        "species": "Mus Musculus",
+        "gene_id_type": "Entrez",
+        "values": [{"symbol": "1", "value": 1.0}],
     }
 
 
