@@ -54,15 +54,17 @@ def test_geneset_upload_schema(geneset_upload_data: dict) -> None:
     """Test creating a geneset upload from a dict."""
     geneset_upload = GenesetUpload(**geneset_upload_data)
     assert geneset_upload.name == geneset_upload_data["name"]
-    assert geneset_upload.label == geneset_upload_data["label"]
-    assert str(geneset_upload.score_type) == geneset_upload_data["score_type"]
+    assert geneset_upload.abbreviation == geneset_upload_data["abbreviation"]
+    assert (
+        str(geneset_upload.score.score_type)
+        == geneset_upload_data["score"]["score_type"]
+    )
     assert geneset_upload.description == geneset_upload_data["description"]
     assert geneset_upload.pubmed_id == geneset_upload_data["pubmed_id"]
-    assert geneset_upload.access == geneset_upload_data["access"]
-    assert geneset_upload.groups == geneset_upload_data["groups"]
-    assert geneset_upload.species == geneset_upload_data["species"]
-    assert geneset_upload.gene_identifier == geneset_upload_data["gene_identifier"]
-    assert len(geneset_upload.gene_list) == len(geneset_upload_data["gene_list"])
+    assert geneset_upload.private == geneset_upload_data["private"]
+    assert str(geneset_upload.species) == geneset_upload_data["species"]
+    assert str(geneset_upload.gene_id_type) == geneset_upload_data["gene_id_type"]
+    assert len(geneset_upload.values) == len(geneset_upload_data["values"])
 
 
 def test_batch_upload_schema(batch_upload_data: dict) -> None:

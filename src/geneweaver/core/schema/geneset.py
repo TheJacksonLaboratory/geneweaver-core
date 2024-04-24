@@ -3,16 +3,15 @@
 import datetime
 from typing import List, Optional, Union
 
-from geneweaver.core.schema.score import GenesetScoreType
 from geneweaver.core.enum import (
     GeneIdentifier,
-    Microarray,
-    GenesetAccess,
     GenesetTier,
+    Microarray,
     ScoreType,
     Species,
 )
 from geneweaver.core.schema.gene import GeneValue
+from geneweaver.core.schema.score import GenesetScoreType
 from pydantic import BaseModel, Field
 
 
@@ -55,7 +54,6 @@ class GenesetUpload(BaseModel):
     gene_id_type: Union[GeneIdentifier, Microarray]
     pubmed_id: Optional[str] = None
     private: bool = True
-    curation_id: Optional[int] = None
     abbreviation: str
     name: str
     description: str = ""
