@@ -1,5 +1,7 @@
 """Pydantic schema for defining score types."""
 
+# ruff: noqa: N805
+
 from typing import Optional
 
 from geneweaver.core.enum import ScoreType
@@ -29,7 +31,7 @@ class GenesetScoreType(BaseModel):
 
     @validator("threshold_low")
     def threshold_low_must_be_less_than_threshold(
-        self, v: Optional[float], values: dict
+        cls, v: Optional[float], values: dict
     ) -> Optional[float]:
         """Threshold low must be less than threshold."""
         if v is not None and v > values.get("threshold"):
@@ -38,7 +40,7 @@ class GenesetScoreType(BaseModel):
 
     @validator("threshold_low")
     def threshold_low_correlation_and_effect_only(
-        self, v: Optional[float], values: dict
+        cls, v: Optional[float], values: dict
     ) -> Optional[float]:
         """Threshold low should only be set for correlation and effect score types."""
         if v is not None and values.get("score_type") not in [
