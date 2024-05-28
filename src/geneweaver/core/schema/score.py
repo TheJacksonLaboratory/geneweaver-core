@@ -3,15 +3,15 @@
 from typing import Optional
 
 from geneweaver.core.enum import ScoreType
-from pydantic import BaseModel
+from pydantic import BaseModel, validator
 
 
 class GenesetScoreType(BaseModel):
     """Pydantic schema for defining score types."""
 
     score_type: ScoreType
-    threshold_low: Optional[float] = None
     threshold: float = 0.05
+    threshold_low: Optional[float] = None
 
     def __str__(self: "GenesetScoreType") -> str:
         """Return a string representation of the score type."""
@@ -26,3 +26,27 @@ class GenesetScoreType(BaseModel):
             return f"{self.threshold_low},{self.threshold}"
         else:
             return str(self.threshold)
+
+    @validator("threshold_low")
+    def threshold_low_must_be_less_than_threshold(
+        self, v: Optional[float], values: dict
+    ) -> Optional[float]:
+        """Threshold low must be less than threshold."""
+        if v is not None and v > values.get("threshold"):
+            raise ValueError("threshold_low must be less than threshold")
+        return v
+
+    @validator("threshold_low")
+    def threshold_low_correlation_and_effect_only(
+        self, v: Optional[float], values: dict
+    ) -> Optional[float]:
+        """Threshold low should only be set for correlation and effect score types."""
+        if v is not None and values.get("score_type") not in [
+            ScoreType.CORRELATION,
+            ScoreType.EFFECT,
+        ]:
+            raise ValueError(
+                "threshold_low should only be set for "
+                "correlation and effect score types"
+            )
+        return v
