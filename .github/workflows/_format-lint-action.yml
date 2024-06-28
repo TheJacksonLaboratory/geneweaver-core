@@ -19,6 +19,6 @@ jobs:
       - name: Install Black and Ruff
         run: pip install black ruff
       - name: Run Ruff Linter
-        run: ruff src/ --fix
+        run: ruff check src/ --fix
       - name: Run Black Formatter
         run: black src/
