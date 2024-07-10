@@ -13,7 +13,7 @@ class Species(BaseModel):
     id: int  # noqa: A003
     name: str
     taxonomic_id: int
-    reference_gene_identifier: Optional[GeneIdentifier]
+    reference_gene_identifier: Optional[GeneIdentifier] = None
 
 
 class SpeciesRow(BaseModel):
@@ -22,7 +22,7 @@ class SpeciesRow(BaseModel):
     sp_id: int
     sp_name: str
     sp_taxid: int
-    sp_ref_gdb_id: Optional[int]
+    sp_ref_gdb_id: Optional[int] = None
     sp_date: datetime.date
-    sp_biomart_info: Optional[str]
+    sp_biomart_info: Optional[str] = None
     sp_source_data: Json[Any]

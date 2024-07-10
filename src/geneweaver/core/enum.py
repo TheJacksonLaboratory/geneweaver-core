@@ -223,6 +223,8 @@ class Species(_StrToIntMixin, Enum):
     SACCHAROMYCES_CEREVISIAE = "Saccharomyces Cerevisiae"
     GALLUS_GALLUS = "Gallus Gallus"
     CANIS_FAMILIARIS = "Canis Familiaris"
+    XENOPUS_TROPICALIS = "Xenopus Tropicalis"
+    XENOPUS_LAEVIS = "Xenopus Laevis"
 
     @staticmethod
     def _int_class() -> Enum:
@@ -243,6 +245,8 @@ class SpeciesInt(_IntToStrMixin, IntEnum):
     SACCHAROMYCES_CEREVISIAE = 9
     GALLUS_GALLUS = 10
     CANIS_FAMILIARIS = 11
+    XENOPUS_TROPICALIS = 12
+    XENOPUS_LAEVIS = 13
 
     @staticmethod
     def _str_class() -> Enum:

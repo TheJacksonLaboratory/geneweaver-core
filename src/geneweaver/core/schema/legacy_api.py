@@ -3,20 +3,20 @@
 from typing import List, Optional
 
 from geneweaver.core.enum import GenesetAccess, ScoreType
-from pydantic import BaseModel, HttpUrl
+from pydantic import ConfigDict, BaseModel, HttpUrl
 
 
 class AddGenesetByUserPublication(BaseModel):
     """Publication schema for adding genesets by user."""
 
-    pub_abstract: Optional[str]
-    pub_authors: Optional[str]
-    pub_journal: Optional[str]
-    pub_pages: Optional[str]
-    pub_pubmed: Optional[str]
-    pub_title: Optional[str]
-    pub_volume: Optional[str]
-    pub_year: Optional[str]
+    pub_abstract: Optional[str] = None
+    pub_authors: Optional[str] = None
+    pub_journal: Optional[str] = None
+    pub_pages: Optional[str] = None
+    pub_pubmed: Optional[str] = None
+    pub_title: Optional[str] = None
+    pub_volume: Optional[str] = None
+    pub_year: Optional[str] = None
 
 
 class AddGenesetByUserBase(BaseModel):
@@ -28,14 +28,10 @@ class AddGenesetByUserBase(BaseModel):
     gs_name: str
     gs_threshold_type: ScoreType
     permissions: GenesetAccess
-    publication: Optional[AddGenesetByUserPublication]
+    publication: Optional[AddGenesetByUserPublication] = None
     select_groups: List[str]
     sp_id: str
-
-    class Config:
-        """Pydantic config."""
-
-        use_enum_values = True
+    model_config = ConfigDict(use_enum_values=True)
 
 
 class AddGenesetByUser(AddGenesetByUserBase):

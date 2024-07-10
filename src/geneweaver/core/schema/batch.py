@@ -8,7 +8,7 @@ from geneweaver.core.parse.score import parse_score
 from geneweaver.core.schema.gene import GeneValue
 from geneweaver.core.schema.messages import MessageResponse
 from geneweaver.core.schema.score import GenesetScoreType
-from pydantic import BaseModel, validator
+from pydantic import field_validator, BaseModel, validator, model_validator
 
 # Header characters which DO NOT need to be space separated.
 HEADER_CHARACTERS = {
@@ -86,7 +86,8 @@ class BatchUploadGeneset(BaseModel):
     description: str = ""
     values: List[GeneValue]
 
-    @validator("species", pre=True)
+    @field_validator("species", mode="before")
+    @classmethod
     def initialize_species(cls, v) -> SpeciesInt:
         """Initialize species."""
         if isinstance(v, SpeciesInt):
@@ -95,7 +96,8 @@ class BatchUploadGeneset(BaseModel):
             return SpeciesInt[v.replace(" ", "_").upper()]
         return SpeciesInt(v)
 
-    @validator("gene_id_type", pre=True)
+    @field_validator("gene_id_type", mode="before")
+    @classmethod
     def initialize_gene_id_type(cls, v) -> Union[GeneIdentifierInt, MicroarrayInt]:
         """Initialize gene id type."""
         if isinstance(v, GeneIdentifierInt) or isinstance(v, MicroarrayInt):
@@ -111,7 +113,8 @@ class BatchUploadGeneset(BaseModel):
                 ]
             return MicroarrayInt(v)
 
-    @validator("score", pre=True)
+    @field_validator("score", mode="before")
+    @classmethod
     def initialize_score(cls, v) -> GenesetScoreType:
         """Initialize score type."""
         if isinstance(v, GenesetScoreType):
@@ -120,20 +123,22 @@ class BatchUploadGeneset(BaseModel):
             return GenesetScoreType(**v)
         return parse_score(v)
 
-    @validator("private", pre=True)
+    @field_validator("private", mode="before")
+    @classmethod
     def private_to_bool(cls, v) -> bool:
         """Convert private str to bool."""
         if isinstance(v, bool):
             return v
         return v.lower() != "public"
 
-    @validator("curation_id", pre=True)
-    def curation_id_to_int(cls, v, values) -> int:
+
+    @model_validator(mode='after')
+    def curation_id_to_int(self):
         """Initialize curation id based on `private` value."""
-        if not v:
+        if not self.curation_id:
             # If the geneset is private, it should be set to have
             # curation tier 5, otherwise it should be set to have
             # curation tier 4.
             # It should default to private if not specified.
-            return 5 if values.get("private", True) else 4
-        return v
+            self.curation_id = 5 if self.private else 4
+        return self

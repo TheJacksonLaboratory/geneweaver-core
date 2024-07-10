@@ -5,7 +5,7 @@ from typing import List, Optional
 
 from geneweaver.core.enum import AdminLevelInt
 from geneweaver.core.schema.stubgenerator import StubGenerator
-from pydantic import BaseModel
+from pydantic.v1 import BaseModel
 
 
 class UserRequiredFields(BaseModel):

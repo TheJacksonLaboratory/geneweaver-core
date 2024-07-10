@@ -4,7 +4,7 @@ import datetime
 from typing import Any, List, Optional
 
 from geneweaver.core.enum import GeneIdentifier, Species
-from pydantic import BaseModel
+from pydantic import ConfigDict, BaseModel
 
 
 class Gene(BaseModel):
@@ -26,8 +26,8 @@ class GeneRow(BaseModel):
     gdb_id: int
     sp_id: int
     ode_pref: bool
-    ode_date: Optional[str]
-    old_ode_gene_ids: Optional[List[int]]
+    ode_date: Optional[str] = None
+    old_ode_gene_ids: Optional[List[int]] = None
 
 
 class GeneValue(BaseModel):
@@ -35,11 +35,7 @@ class GeneValue(BaseModel):
 
     symbol: str
     value: float
-
-    class Config:
-        """Pydantic config."""
-
-        allow_mutation = False
+    model_config = ConfigDict(frozen=True)
 
     def __str__(self: "GeneValue") -> str:
         """Return the gene symbol."""
@@ -76,4 +72,4 @@ class GeneDatabaseRow(BaseModel):
     gdb_shortname: str
     gdb_date: str
     gdb_precision: int
-    gdb_linkout_url: Optional[str]
+    gdb_linkout_url: Optional[str] = None
