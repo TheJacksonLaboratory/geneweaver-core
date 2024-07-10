@@ -6,6 +6,7 @@ from geneweaver.core.schema.legacy_api import (
     AddGenesetByUserFile,
     AddGenesetByUserPublication,
 )
+from pydantic.networks import AnyUrl
 
 
 def test_add_gs_by_user_pub_schema(add_geneset_by_user_publication_data: dict) -> None:
@@ -44,4 +45,5 @@ def test_add_gs_by_user_file_schema(add_geneset_by_user_file_data: dict) -> None
     """Test the AddGenesetByUserFile class."""
     gs = AddGenesetByUserFile(**add_geneset_by_user_file_data)
     _shared_add_gs_by_user_asserts(gs, add_geneset_by_user_file_data)
-    assert gs.file_url == add_geneset_by_user_file_data["file_url"]
+    assert gs.file_url == AnyUrl(add_geneset_by_user_file_data["file_url"])
+    assert str(gs.file_url) == add_geneset_by_user_file_data["file_url"] + "/"

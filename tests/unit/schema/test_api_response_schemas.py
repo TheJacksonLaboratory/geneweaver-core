@@ -7,6 +7,7 @@ from geneweaver.core.schema.api_response import CollectionResponse, Paging, Pagi
 from geneweaver.core.schema.gene import Gene, GeneValue
 from geneweaver.core.schema.geneset import BatchUpload, Geneset, GenesetTier
 from geneweaver.core.schema.publication import Publication, PublicationInfo
+from pydantic import AnyUrl
 
 
 def test_paging_links():
@@ -17,10 +18,10 @@ def test_paging_links():
         next="http://example.com/next",
         last="http://example.com/last",
     )
-    assert links.first == "http://example.com/first"
-    assert links.previous == "http://example.com/previous"
-    assert links.next == "http://example.com/next"
-    assert links.last == "http://example.com/last"
+    assert str(links.first) == "http://example.com/first"
+    assert str(links.previous) == "http://example.com/previous"
+    assert str(links.next) == "http://example.com/next"
+    assert str(links.last) == "http://example.com/last"
 
 
 @pytest.mark.parametrize(
@@ -65,10 +66,14 @@ def test_paging():
     assert paging.items == 10
     assert paging.total_pages == 5
     assert paging.total_items == 50
-    assert paging.links.first == "http://example.com/first"
-    assert paging.links.previous == "http://example.com/previous"
-    assert paging.links.next == "http://example.com/next"
-    assert paging.links.last == "http://example.com/last"
+    assert paging.links.first == AnyUrl("http://example.com/first")
+    assert paging.links.previous == AnyUrl("http://example.com/previous")
+    assert paging.links.next == AnyUrl("http://example.com/next")
+    assert paging.links.last == AnyUrl("http://example.com/last")
+    assert str(paging.links.first) == "http://example.com/first"
+    assert str(paging.links.previous) == "http://example.com/previous"
+    assert str(paging.links.next) == "http://example.com/next"
+    assert str(paging.links.last) == "http://example.com/last"
 
 
 @pytest.mark.parametrize(
@@ -116,10 +121,18 @@ def test_collection_response():
     assert collection_response.paging.items == 10
     assert collection_response.paging.total_pages == 5
     assert collection_response.paging.total_items == 50
-    assert collection_response.paging.links.first == "http://example.com/first"
-    assert collection_response.paging.links.previous == "http://example.com/previous"
-    assert collection_response.paging.links.next == "http://example.com/next"
-    assert collection_response.paging.links.last == "http://example.com/last"
+    assert collection_response.paging.links.first == AnyUrl("http://example.com/first")
+    assert collection_response.paging.links.previous == AnyUrl(
+        "http://example.com/previous"
+    )
+    assert collection_response.paging.links.next == AnyUrl("http://example.com/next")
+    assert collection_response.paging.links.last == AnyUrl("http://example.com/last")
+    assert str(collection_response.paging.links.first) == "http://example.com/first"
+    assert (
+        str(collection_response.paging.links.previous) == "http://example.com/previous"
+    )
+    assert str(collection_response.paging.links.next) == "http://example.com/next"
+    assert str(collection_response.paging.links.last) == "http://example.com/last"
 
 
 @pytest.mark.parametrize(
