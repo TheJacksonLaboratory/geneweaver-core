@@ -1,14 +1,15 @@
 """Module for defining schemas for batch endpoints."""
 
-# ruff: noqa: N805, ANN001, ANN101
-from typing import List, Optional, Union
+# ruff: noqa: N805, ANN001, ANN101, ANN401
+from typing import Any, List, Optional, Type, Union
 
 from geneweaver.core.enum import GeneIdentifierInt, MicroarrayInt, SpeciesInt
 from geneweaver.core.parse.score import parse_score
 from geneweaver.core.schema.gene import GeneValue
 from geneweaver.core.schema.messages import MessageResponse
 from geneweaver.core.schema.score import GenesetScoreType
-from pydantic import field_validator, BaseModel, validator, model_validator
+from pydantic import BaseModel, field_validator, model_validator
+from typing_extensions import Self
 
 # Header characters which DO NOT need to be space separated.
 HEADER_CHARACTERS = {
@@ -88,7 +89,7 @@ class BatchUploadGeneset(BaseModel):
 
     @field_validator("species", mode="before")
     @classmethod
-    def initialize_species(cls, v) -> SpeciesInt:
+    def initialize_species(cls: Type["BatchUploadGeneset"], v: Any) -> SpeciesInt:
         """Initialize species."""
         if isinstance(v, SpeciesInt):
             return v
@@ -98,7 +99,9 @@ class BatchUploadGeneset(BaseModel):
 
     @field_validator("gene_id_type", mode="before")
     @classmethod
-    def initialize_gene_id_type(cls, v) -> Union[GeneIdentifierInt, MicroarrayInt]:
+    def initialize_gene_id_type(
+        cls: Type["BatchUploadGeneset"], v: Any
+    ) -> Union[GeneIdentifierInt, MicroarrayInt]:
         """Initialize gene id type."""
         if isinstance(v, GeneIdentifierInt) or isinstance(v, MicroarrayInt):
             return v
@@ -115,7 +118,7 @@ class BatchUploadGeneset(BaseModel):
 
     @field_validator("score", mode="before")
     @classmethod
-    def initialize_score(cls, v) -> GenesetScoreType:
+    def initialize_score(cls: Type["BatchUploadGeneset"], v: Any) -> GenesetScoreType:
         """Initialize score type."""
         if isinstance(v, GenesetScoreType):
             return v
@@ -125,15 +128,14 @@ class BatchUploadGeneset(BaseModel):
 
     @field_validator("private", mode="before")
     @classmethod
-    def private_to_bool(cls, v) -> bool:
+    def private_to_bool(cls: Type["BatchUploadGeneset"], v: Any) -> bool:
         """Convert private str to bool."""
         if isinstance(v, bool):
             return v
         return v.lower() != "public"
 
-
-    @model_validator(mode='after')
-    def curation_id_to_int(self):
+    @model_validator(mode="after")
+    def curation_id_to_int(self) -> Self:
         """Initialize curation id based on `private` value."""
         if not self.curation_id:
             # If the geneset is private, it should be set to have

@@ -3,7 +3,7 @@
 from typing import List, Optional
 
 from geneweaver.core.enum import GenesetAccess, ScoreType
-from pydantic import ConfigDict, BaseModel, HttpUrl
+from pydantic import BaseModel, ConfigDict, HttpUrl
 
 
 class AddGenesetByUserPublication(BaseModel):

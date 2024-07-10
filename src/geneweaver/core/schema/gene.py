@@ -4,7 +4,7 @@ import datetime
 from typing import Any, List, Optional
 
 from geneweaver.core.enum import GeneIdentifier, Species
-from pydantic import ConfigDict, BaseModel
+from pydantic import BaseModel, ConfigDict
 
 
 class Gene(BaseModel):
