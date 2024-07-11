@@ -9,7 +9,7 @@ from geneweaver.core.config_class import CoreSettings
 @pytest.mark.parametrize("attribute", ["PROJECT_NAME", "LOG_LEVEL"])
 def test_core_settings_schema(attribute: List[str]) -> None:
     """Test the CoreSettings class."""
-    schema = CoreSettings.schema()
+    schema = CoreSettings.model_json_schema()
     assert attribute in schema["properties"]
 
 

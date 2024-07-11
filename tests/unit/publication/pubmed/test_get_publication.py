@@ -128,7 +128,7 @@ def test_get_publication(
 
     result = get_publication(pubmed_id)
 
-    assert result.dict() == expected.dict()
+    assert result.model_dump() == expected.model_dump()
 
     mock_get_xml_for_pubmed_id.assert_called_once_with(pubmed_id)
     mock_extract_fields.assert_called_once()
