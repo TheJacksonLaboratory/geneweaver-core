@@ -16,7 +16,7 @@ class PublicationInfo(BaseModel):
     volume: Optional[str] = None
     pages: Optional[str] = None
     month: Optional[str] = None
-    year: Optional[int] = None
+    year: Optional[str] = None
 
 
 class Publication(PublicationInfo):
