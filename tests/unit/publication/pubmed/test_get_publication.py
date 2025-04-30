@@ -12,7 +12,7 @@ EXAMPLE_XMLS = ["<root></root>", "<root></root>", "<root></root>", "<root></root
 EXAMPLE_PUBLICATION_FIELDS = [
     {
         "title": "Title1",
-        "year": 2022,
+        "year": "2022",
         "authors": "John Doe",
         "abstract": "Abstract1",
         "journal": "Journal1",
@@ -23,7 +23,7 @@ EXAMPLE_PUBLICATION_FIELDS = [
     },
     {
         "title": "Title2",
-        "year": 2023,
+        "year": "2023",
         "authors": "Jane Doe",
         "abstract": "Abstract2",
         "journal": "Journal2",
@@ -34,7 +34,7 @@ EXAMPLE_PUBLICATION_FIELDS = [
     },
     {
         "title": "Title3",
-        "year": 2024,
+        "year": "2024",
         "authors": "John Smith",
         "abstract": "Abstract3",
         "journal": "Journal3",
@@ -45,7 +45,7 @@ EXAMPLE_PUBLICATION_FIELDS = [
     },
     {
         "title": "Title4",
-        "year": 2025,
+        "year": "2025",
         "authors": "Jane Smith",
         "abstract": "Abstract4",
         "journal": "Journal4",
@@ -58,7 +58,7 @@ EXAMPLE_PUBLICATION_FIELDS = [
 EXAMPLE_PUBLICATION_INFOS = [
     PublicationInfo(
         title="Title1",
-        year=2022,
+        year="2022",
         authors="John Doe",
         abstract="Abstract1",
         journal="Journal1",
@@ -69,7 +69,7 @@ EXAMPLE_PUBLICATION_INFOS = [
     ),
     PublicationInfo(
         title="Title2",
-        year=2023,
+        year="2023",
         authors="Jane Doe",
         abstract="Abstract2",
         journal="Journal2",
@@ -80,7 +80,7 @@ EXAMPLE_PUBLICATION_INFOS = [
     ),
     PublicationInfo(
         title="Title3",
-        year=2024,
+        year="2024",
         authors="John Smith",
         abstract="Abstract3",
         journal="Journal3",
@@ -91,7 +91,7 @@ EXAMPLE_PUBLICATION_INFOS = [
     ),
     PublicationInfo(
         title="Title4",
-        year=2025,
+        year="2025",
         authors="Jane Smith",
         abstract="Abstract4",
         journal="Journal4",
